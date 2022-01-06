@@ -3,13 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 public class Start extends JFrame implements ActionListener {
 	/**
 	 * Author: Ian Tang
 	 * Date: January 4th, 2022
-	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private static JFrame f;
@@ -72,11 +73,6 @@ public class Start extends JFrame implements ActionListener {
 		f.setVisible(true);
 		f.add(myLabel);
 		in.close();
-		//rewriting text file to include current users + passwords
-		
-
-
-
 	}
 	public void saveUsers() throws IOException {
 		out = new BufferedWriter(new FileWriter(fileName));
@@ -111,29 +107,36 @@ public class Start extends JFrame implements ActionListener {
 		b.setForeground(Color.black);
 		b.setBackground(Color.orange);
 	}
-
-	@Override
+	
+	public void accessGranted() {
+		JOptionPane.showMessageDialog(this, "Access Granted!");
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == login) {
-			curUser = userName.getText(); System.out.println(curUser);
-			curPass = password.getText(); System.out.println(curPass);
+			curUser = userName.getText();
+			curPass = password.getText();
 			if(userCheck()) {
-				System.out.println("Access Granted!");
+				accessGranted();
 				login.setEnabled(false);
 				//				new MainMenu();
 			} else {
-				System.out.println("Error, you are not in the system! Please register now!");
-				//				errorMessage();
+				JOptionPane.showMessageDialog(this, "Error, you have not entered the correct username or password.");
 			}
 
 		} else if (e.getSource() == register) {
 			curUser = userName.getText();
 			curPass = password.getText();
 			try {
-				addUser();
-				System.out.println("Access Granted!");
-				register.setEnabled(false);
-//				new MainMenu();
+				if(Arrays.asList(accounts[0]).contains(curUser)){
+					JOptionPane.showMessageDialog(this, "Error: An account with this username already exists.");
+				} else {
+					addUser();
+					accessGranted();
+					register.setEnabled(false);
+//					new MainMenu();	
+				}
+				
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
