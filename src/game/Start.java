@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Arrays;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 public class Start extends JFrame implements ActionListener {
 	/**
 	 * Author: Ian Tang
 	 * Date: January 4th, 2022
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private static JFrame f;
@@ -36,11 +39,11 @@ public class Start extends JFrame implements ActionListener {
 
 	Start() throws IOException {
 		in = new BufferedReader(new FileReader(fileName));
+
 		//reading in usernames and passwords
 		users = in.readLine().split(" ");
 		passwords = in.readLine().split(" ");
 		numOfUsers = users.length;
-		System.out.println(numOfUsers);
 		for(int i = 0; i < numOfUsers; i++) {
 			accounts[0][i] = users[i];
 			accounts[1][i] = passwords[i];
@@ -71,6 +74,7 @@ public class Start extends JFrame implements ActionListener {
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
+		f.setLocationRelativeTo(null);
 		f.add(myLabel);
 		in.close();
 	}
@@ -80,6 +84,7 @@ public class Start extends JFrame implements ActionListener {
 			out.write(accounts[0][i] + " ");
 		}
 		out.newLine();
+		
 		for(int i = 0; i < numOfUsers; i++) {
 			out.write(accounts[1][i] + " ");
 		}
@@ -107,58 +112,65 @@ public class Start extends JFrame implements ActionListener {
 		b.setForeground(Color.black);
 		b.setBackground(Color.orange);
 	}
-	
+
 	public void accessGranted() {
 		JOptionPane.showMessageDialog(this, "Access Granted!");
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == login) {
-			curUser = userName.getText();
-			curPass = password.getText();
-			if(userCheck()) {
-				accessGranted();
-				login.setEnabled(false);
-				//				new MainMenu();
-			} else {
-				JOptionPane.showMessageDialog(this, "Error, you have not entered the correct username or password.");
-			}
-
-		} else if (e.getSource() == register) {
-			curUser = userName.getText();
+			curUser = userName.getText(); 
 			curPass = password.getText();
 			try {
-				if(Arrays.asList(accounts[0]).contains(curUser)){
-					JOptionPane.showMessageDialog(this, "Error: An account with this username already exists.");
-				} else {
-					addUser();
+				if(userCheck()) {
 					accessGranted();
-					register.setEnabled(false);
-//					new MainMenu();	
+					login.setEnabled(false);
+					new MainMenu();
+					f.dispose();
+				} else {
+					JOptionPane.showMessageDialog(this, "Error, you have not entered the correct username or password.");
 				}
-				
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			} catch (IOException | LineUnavailableException | UnsupportedAudioFileException exc) {
+					exc.printStackTrace();
+				}
+
+			} else if (e.getSource() == register) {
+				curUser = userName.getText();
+				curPass = password.getText();
+				try {
+					if(Arrays.asList(accounts[0]).contains(curUser)){
+						JOptionPane.showMessageDialog(this, "Error: An account with this username already exists.");
+					} else {
+						addUser();
+						accessGranted();
+						register.setEnabled(false);
+						new MainMenu();	
+						f.dispose();
+					}
+
+				} catch (IOException | LineUnavailableException | UnsupportedAudioFileException e1) {
+					e1.printStackTrace();
+				}
+
 			}
 
 		}
+		private void printAccounts() {
+			for(int i = 0; i < 2; i++) {
+				for(int j = 0; j < numOfUsers; j++) {
+					System.out.print(accounts[i][j] + " ");
+				}
+				System.out.println();
+			}
+		}
+		private boolean userCheck() {
 
-	}
-	private void printAccounts() {
-		for(int i = 0; i < 2; i++) {
 			for(int j = 0; j < numOfUsers; j++) {
-				System.out.print(accounts[i][j] + " ");
+				if(curUser.equals(accounts[0][j]) && curPass.equals(accounts[1][j]))return true;
 			}
-			System.out.println();
+
+			return false;
 		}
 	}
-	private boolean userCheck() {
-
-		for(int j = 0; j < numOfUsers; j++) {
-			if(curUser.equals(accounts[0][j]) && curPass.equals(accounts[1][j]))return true;
-		}
-
-		return false;
-	}
-}
 
