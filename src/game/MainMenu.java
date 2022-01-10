@@ -48,10 +48,14 @@ public class MainMenu implements ActionListener{
 		gameStart.setBounds(600, 300, 300, 60);
 		tutorial = new JButton("How to Play");
 		tutorial.setBounds(600, 400, 300, 60);
+		leaderboard = new JButton("Leaderboard");
+		leaderboard.setBounds(600, 500, 300, 60);
+		exitGame = new JButton("Exit Game");
+		exitGame.setBounds(600, 600, 300, 60);
 		makeButton(gameStart);
 		makeButton(tutorial);
-		MyLabel.add(gameStart);
-		MyLabel.add(tutorial);
+		makeButton(leaderboard);
+		makeButton(exitGame);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
@@ -73,6 +77,7 @@ public class MainMenu implements ActionListener{
 			b.setOpaque(false);
 			b.setContentAreaFilled(false);
 			b.setBorderPainted(false);
+			MyLabel.add(b);
 		}
 		public void makeLabel(JLabel l) {
 			l.setForeground(Color.white);
