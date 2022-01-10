@@ -14,11 +14,12 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
-public class MainMenu{
+public class MainMenu implements ActionListener{
 	String userName = Start.getUser();
 	JFrame f;
+	JButton exitGame, leaderboard, gameStart, tutorial;
 	JLabel MyLabel, title, authors, signedInAs;
-	Font buttonFont = new Font("Comic Sans",Font.BOLD, 18);
+	Font buttonFont = new Font("Comic Sans",Font.BOLD, 30);
 	Font textFont = new Font("Verdana", Font.BOLD, 14);
 	Clip clip;
 	ImageIcon background, Title;
@@ -43,6 +44,14 @@ public class MainMenu{
 		MyLabel.setSize(1600, 900);
 		title.setSize(980,60);
 		title.setBounds(180, 100, 1158, 97);
+		gameStart = new JButton("Start Game");
+		gameStart.setBounds(600, 300, 300, 60);
+		tutorial = new JButton("How to Play");
+		tutorial.setBounds(600, 400, 300, 60);
+		makeButton(gameStart);
+		makeButton(tutorial);
+		MyLabel.add(gameStart);
+		MyLabel.add(tutorial);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
@@ -55,9 +64,24 @@ public class MainMenu{
         f.add(MyLabel);
 		
 	}
+		public void makeButton(JButton b) {
+			b.setFont(buttonFont);
+			b.setForeground(Color.white);
+			b.setBackground(new Color(36, 100, 187));
+			b.addActionListener(this);
+			b.setFocusable(false);
+			b.setOpaque(false);
+			b.setContentAreaFilled(false);
+			b.setBorderPainted(false);
+		}
 		public void makeLabel(JLabel l) {
 			l.setForeground(Color.white);
 			l.setFont(textFont);
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
 		}
 	
 }
