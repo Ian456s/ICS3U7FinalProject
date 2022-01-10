@@ -98,7 +98,6 @@ public class Start extends JFrame implements ActionListener {
 		return curPass;
 	}
 	public void addUser() throws IOException {
-		System.out.println(numOfUsers);
 		accounts[0][numOfUsers] = curUser;
 		accounts[1][numOfUsers] = curPass;
 		numOfUsers++;
@@ -126,7 +125,7 @@ public class Start extends JFrame implements ActionListener {
 				if(userCheck()) {
 					accessGranted();
 					login.setEnabled(false);
-					new MainMenu();
+					new TitleScreen();
 					f.dispose();
 				} else {
 					JOptionPane.showMessageDialog(this, "Error, you have not entered the correct username or password.");
@@ -145,7 +144,7 @@ public class Start extends JFrame implements ActionListener {
 						addUser();
 						accessGranted();
 						register.setEnabled(false);
-						new MainMenu();	
+						new TitleScreen();	
 						f.dispose();
 					}
 
@@ -169,7 +168,6 @@ public class Start extends JFrame implements ActionListener {
 			for(int j = 0; j < numOfUsers; j++) {
 				if(curUser.equals(accounts[0][j]) && curPass.equals(accounts[1][j]))return true;
 			}
-
 			return false;
 		}
 	}
