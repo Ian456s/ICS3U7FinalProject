@@ -18,7 +18,7 @@ public class Start extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private static JFrame f;
 	private ImageIcon background;
-	private JLabel myLabel;
+	private JLabel backgroundLabel;
 	final static int MAX = 100000;
 	private JButton login;
 	private JButton register;
@@ -49,13 +49,13 @@ public class Start extends JFrame implements ActionListener {
 			accounts[1][i] = passwords[i];
 		}
 		background = new ImageIcon(this.getClass().getResource("/background.jpg"));
-		myLabel = new JLabel(background);
-		myLabel.setSize(1280, 972);
-		f = new JFrame("Start");
+		backgroundLabel = new JLabel(background);
+		backgroundLabel.setSize(1280, 972);
+		f = new JFrame("Our Lost Friend - Login");
 
 		JLabel newPlayer = new JLabel("New to the game? Register now!");
 		newPlayer.setBounds(555, 480, 300, 30);
-		myLabel.add(newPlayer);
+		backgroundLabel.add(newPlayer);
 		userName = new JTextArea("Username");
 		userName.setBounds(500, 350, 300, 30);
 		password = new JTextArea("Password");
@@ -66,16 +66,16 @@ public class Start extends JFrame implements ActionListener {
 		register = new JButton("Register");
 		register.setBounds(590,520,100,30);
 		makeButton(register);
-		myLabel.add(userName);
-		myLabel.add(password);
-		myLabel.add(login);
-		myLabel.add(register);
+		backgroundLabel.add(userName);
+		backgroundLabel.add(password);
+		backgroundLabel.add(login);
+		backgroundLabel.add(register);
 		f.setSize(1280,972);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		f.setLocationRelativeTo(null);
-		f.add(myLabel);
+		f.add(backgroundLabel);
 		in.close();
 	}
 	public void saveUsers() throws IOException {
@@ -84,7 +84,7 @@ public class Start extends JFrame implements ActionListener {
 			out.write(accounts[0][i] + " ");
 		}
 		out.newLine();
-		
+
 		for(int i = 0; i < numOfUsers; i++) {
 			out.write(accounts[1][i] + " ");
 		}
@@ -116,59 +116,74 @@ public class Start extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, "Access Granted!");
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == login) {
-			curUser = userName.getText(); 
-			curPass = password.getText();
-			try {
-				if(userCheck()) {
-					accessGranted();
-					login.setEnabled(false);
-					new TitleScreen();
-					f.dispose();
-				} else {
-					JOptionPane.showMessageDialog(this, "Error, you have not entered the correct username or password.");
-				}
-			} catch (IOException | LineUnavailableException | UnsupportedAudioFileException exc) {
-					exc.printStackTrace();
-				}
-
-			} else if (e.getSource() == register) {
-				curUser = userName.getText();
-				curPass = password.getText();
-				try {
-					if(Arrays.asList(accounts[0]).contains(curUser)){
-						JOptionPane.showMessageDialog(this, "Error: An account with this username already exists.");
-					} else {
-						addUser();
-						accessGranted();
-						register.setEnabled(false);
-						new TitleScreen();	
-						f.dispose();
-					}
-
-				} catch (IOException | LineUnavailableException | UnsupportedAudioFileException e1) {
-					e1.printStackTrace();
-				}
-
+	public void register() throws FontFormatException {
+		curUser = userName.getText();
+		curPass = password.getText();
+		try {
+			if(Arrays.asList(accounts[0]).contains(curUser)){
+				JOptionPane.showMessageDialog(this, "Error: An account with this username already exists.");
+			} else {
+				addUser();
+				accessGranted();
+				register.setEnabled(false);
+				new TitleScreen();	
+				f.dispose();
 			}
 
-		}
-		private void printAccounts() {
-			for(int i = 0; i < 2; i++) {
-				for(int j = 0; j < numOfUsers; j++) {
-					System.out.print(accounts[i][j] + " ");
-				}
-				System.out.println();
-			}
-		}
-		private boolean userCheck() {
-
-			for(int j = 0; j < numOfUsers; j++) {
-				if(curUser.equals(accounts[0][j]) && curPass.equals(accounts[1][j]))return true;
-			}
-			return false;
+		} catch (IOException | LineUnavailableException | UnsupportedAudioFileException e1) {
+			e1.printStackTrace();
 		}
 	}
+
+	public void login() throws FontFormatException {
+		curUser = userName.getText(); 
+		curPass = password.getText();
+		try {
+			if(userCheck()) {
+				accessGranted();
+				login.setEnabled(false);
+				new TitleScreen();
+				f.dispose();
+			} else if(!Arrays.asList(accounts[0]).contains(curUser)){
+				JOptionPane.showMessageDialog(this, "Error, your username does not have an account linked to it!");
+			} else {
+				JOptionPane.showMessageDialog(this, "Error, you have not entered the correct username or password.");
+			}
+		} catch (IOException | LineUnavailableException | UnsupportedAudioFileException exc) {
+			exc.printStackTrace();
+		}
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == login) {
+			try {
+				login();
+			} catch (FontFormatException e1) {
+				e1.printStackTrace();
+			}
+		} else if (e.getSource() == register) {
+			try {
+				register();
+			} catch (FontFormatException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+	}
+	private void printAccounts() {
+		for(int i = 0; i < 2; i++) {
+			for(int j = 0; j < numOfUsers; j++) {
+				System.out.print(accounts[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	private boolean userCheck() {
+
+		for(int j = 0; j < numOfUsers; j++) {
+			if(curUser.equals(accounts[0][j]) && curPass.equals(accounts[1][j]))return true;
+		}
+		return false;
+	}
+}
 

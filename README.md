@@ -1,3 +1,5 @@
 # ICS3U7FinalProject
 # Name: Our Lost Friend
-# A 2D platformer game inspired by Mario, with a twist
+# Made by: Ian Tang & Naveed Khan 
+# Date Start: 12/20/2021
+# Date End: 

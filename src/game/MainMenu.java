@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -18,22 +19,24 @@ public class MainMenu implements ActionListener{
 	String userName = Start.getUser();
 	JFrame f;
 	JButton exitGame, leaderboard, gameStart, tutorial;
-	JLabel MyLabel, title, authors, signedInAs;
-	Font buttonFont = new Font("Comic Sans",Font.BOLD, 30);
+	JLabel backgroundLabel, titleLabel, authors, signedInAs;
+	Font buttonFont, biggerFont;
 	Font textFont = new Font("Verdana", Font.BOLD, 14);
 	Clip clip;
 	ImageIcon background, Title;
-	public static void main(String[] args) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+	public static void main(String[] args) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		new MainMenu();
 	}
-	MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+	MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		background = new ImageIcon(this.getClass().getResource("/mainMenuBackground.jpg"));
+		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
+		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		clip = AudioSystem.getClip();
         clip.open(AudioSystem.getAudioInputStream(new File(getClass().getResource("/OurLostFriend.wav").getPath())));
-		f = new JFrame("Our Lost Friend - Ian Tang & Naveed Khan");
-		MyLabel = new JLabel(background);
-		title = new JLabel(Title);
+		f = new JFrame("Our Lost Friend - Main Menu - Ian Tang & Naveed Khan");
+		backgroundLabel = new JLabel(background);
+		titleLabel = new JLabel(Title);
 		authors = new JLabel("<html><p style=\"width:200px\">"+"By: Ian Tang & Naveed Khan <br> Class: ICS3U7-01 <br> Teacher: Mrs. Xie"+"</p></html>");
 		makeLabel(authors);
 		authors.setBounds(10, -10, 300, 100);
@@ -41,9 +44,9 @@ public class MainMenu implements ActionListener{
 		makeLabel(signedInAs);
 		signedInAs.setBounds(1400, -10, 210, 100);
 		f.setSize(1600, 900);
-		MyLabel.setSize(1600, 900);
-		title.setSize(980,60);
-		title.setBounds(180, 100, 1158, 97);
+		backgroundLabel.setSize(1600, 900);
+		titleLabel.setSize(980,60);
+		titleLabel.setBounds(180, 100, 1158, 97);
 		gameStart = new JButton("Start Game");
 		gameStart.setBounds(600, 300, 300, 60);
 		tutorial = new JButton("How to Play");
@@ -64,12 +67,12 @@ public class MainMenu implements ActionListener{
         clip.start();
 		f.add(signedInAs);
 		f.add(authors);
-        f.add(title);
-        f.add(MyLabel);
+        f.add(titleLabel);
+        f.add(backgroundLabel);
 		
 	}
 		public void makeButton(JButton b) {
-			b.setFont(buttonFont);
+			b.setFont(biggerFont);
 			b.setForeground(Color.white);
 			b.setBackground(new Color(36, 100, 187));
 			b.addActionListener(this);
@@ -77,13 +80,12 @@ public class MainMenu implements ActionListener{
 			b.setOpaque(false);
 			b.setContentAreaFilled(false);
 			b.setBorderPainted(false);
-			MyLabel.add(b);
+			backgroundLabel.add(b);
 		}
 		public void makeLabel(JLabel l) {
 			l.setForeground(Color.white);
 			l.setFont(textFont);
 		}
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			
