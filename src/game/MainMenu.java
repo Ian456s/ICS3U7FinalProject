@@ -87,8 +87,28 @@ public class MainMenu implements ActionListener{
 			l.setFont(textFont);
 		}
 		public void actionPerformed(ActionEvent e) {
-			
+			if(e.getSource() == gameStart) {
+//				new Game();
+//				clip.stop();
+//				f.dispose();
+				notYetMade();
+			} else if (e.getSource() == tutorial) {
+				notYetMade();
+			} else if (e.getSource() == leaderboard) {
+				notYetMade();
+			} else if (e.getSource() == exitGame) {
+				reprompt();
+			}
 			
 		}
-	
+		
+		public void reprompt() {
+			int result = JOptionPane.showConfirmDialog(f,
+			        "Are you sure you want to quit?",
+			        "Confirm Quit", JOptionPane.YES_NO_CANCEL_OPTION);
+			if (result == JOptionPane.YES_OPTION) System.exit(0);
+		}
+		public void notYetMade() {
+			JOptionPane.showMessageDialog(f, "Hey! This hasn't been added to our game yet!");
+		}
 }
