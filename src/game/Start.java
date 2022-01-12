@@ -13,7 +13,6 @@ public class Start extends JFrame implements ActionListener {
 	/**
 	 * Author: Ian Tang
 	 * Date: January 4th, 2022
-	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private static JFrame f;
@@ -22,11 +21,12 @@ public class Start extends JFrame implements ActionListener {
 	final static int MAX = 100000;
 	private JButton login;
 	private JButton register;
+	private JButton changePassword;
 	private JTextArea userName, password;
 	private String fileName = "accounts.txt";
 	private BufferedReader in;
 	private BufferedWriter out;
-	private String[][] accounts = new String[2][100000];
+	public static String[][] accounts = new String[2][100000];
 	String[] users, passwords;
 	int numOfUsers;
 	public static String curUser;
@@ -66,10 +66,12 @@ public class Start extends JFrame implements ActionListener {
 		register = new JButton("Register");
 		register.setBounds(590,520,100,30);
 		makeButton(register);
+		changePassword = new JButton("Change Password");
+		changePassword.setBounds(542, 560, 200, 30);
+		changePasswordButton(changePassword);
 		backgroundLabel.add(userName);
 		backgroundLabel.add(password);
-		backgroundLabel.add(login);
-		backgroundLabel.add(register);
+		backgroundLabel.add(changePassword);
 		f.setSize(1280,972);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,6 +96,9 @@ public class Start extends JFrame implements ActionListener {
 	public static String getUser() {
 		return curUser;
 	}
+	public static String[][] getAccounts(){
+		return accounts;
+	}
 	public static String getPass() {
 		return curPass;
 	}
@@ -110,6 +115,7 @@ public class Start extends JFrame implements ActionListener {
 		b.setFont(buttonFont);
 		b.setForeground(Color.black);
 		b.setBackground(Color.orange);
+		backgroundLabel.add(b);
 	}
 
 	public void accessGranted() {
@@ -167,9 +173,29 @@ public class Start extends JFrame implements ActionListener {
 			} catch (FontFormatException e1) {
 				e1.printStackTrace();
 			}
+		} else if(e.getSource() == changePassword) {
+				changePassword();
 		}
 
 	}
+	private void changePassword() {
+		try {
+			new changePassword();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		
+	}
+	private void changePasswordButton(JButton b) {
+		b.addActionListener(this);
+		b.setFont(buttonFont);
+		b.setForeground(new Color(5, 60, 200));
+		b.setFocusable(false);
+		b.setOpaque(false);
+		b.setContentAreaFilled(false);
+		b.setBorderPainted(false);
+	}
+	
 	private void printAccounts() {
 		for(int i = 0; i < 2; i++) {
 			for(int j = 0; j < numOfUsers; j++) {
@@ -178,6 +204,7 @@ public class Start extends JFrame implements ActionListener {
 			System.out.println();
 		}
 	}
+	
 	private boolean userCheck() {
 
 		for(int j = 0; j < numOfUsers; j++) {
