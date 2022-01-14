@@ -30,7 +30,7 @@ public class TitleScreen implements ActionListener {
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 24f);
 		clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(new File(getClass().getResource("bgm.wav").getPath())));
+		clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("bgm.wav").getPath())));
 		f = new JFrame("Our Lost Friend - Title");
 		backgroundLabel = new JLabel(background);
 		titleLabel = new JLabel(Title);
@@ -38,7 +38,7 @@ public class TitleScreen implements ActionListener {
 		backgroundLabel.setSize(1280, 720);
 		titleLabel.setSize(980,60);
 		titleLabel.setBounds(60, 100, 1158, 97);
-		continueButton = new JButton("Continue...");
+		continueButton = new JButton("Continue");
 		continueButton.setBounds(590, 500, 150, 40);
 		continueButton.addActionListener(this);
 		continueButton.setFocusable(false);

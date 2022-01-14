@@ -18,10 +18,11 @@ import javax.swing.*;
 public class MainMenu implements ActionListener{
 	String userName = Start.getUser();
 	JFrame f;
-	JButton exitGame, leaderboard, gameStart, tutorial;
+	JButton exitGame, leaderboard, gameStart, tutorial, changePassword;
 	JLabel backgroundLabel, titleLabel, authors, signedInAs;
 	Font buttonFont, biggerFont;
 	Font textFont = new Font("Verdana", Font.BOLD, 14);
+	boolean changedPass;
 	Clip clip;
 	ImageIcon background, Title;
 	public static void main(String[] args) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
@@ -33,7 +34,8 @@ public class MainMenu implements ActionListener{
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("OurLostFriend.wav").getPath())));
+		clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("OurLostFriend.wav").getPath())));
+		changedPass = false;
 		f = new JFrame("Our Lost Friend - Main Menu - Ian Tang & Naveed Khan");
 		backgroundLabel = new JLabel(background);
 		titleLabel = new JLabel(Title);
@@ -55,60 +57,74 @@ public class MainMenu implements ActionListener{
 		leaderboard.setBounds(600, 500, 300, 60);
 		exitGame = new JButton("Exit Game");
 		exitGame.setBounds(600, 600, 300, 60);
+		changePassword = new JButton("Change Password");
+		changePassword.setBounds(550, 700, 400, 60);
 		makeButton(gameStart);
 		makeButton(tutorial);
 		makeButton(leaderboard);
 		makeButton(exitGame);
+		makeButton(changePassword);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		f.setLocationRelativeTo(null);
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
-        clip.start();
+		clip.start();
 		f.add(signedInAs);
 		f.add(authors);
-        f.add(titleLabel);
-        f.add(backgroundLabel);
-		
+		f.add(titleLabel);
+		f.add(backgroundLabel);
+
 	}
-		public void makeButton(JButton b) {
-			b.setFont(biggerFont);
-			b.setForeground(Color.white);
-			b.setBackground(new Color(36, 100, 187));
-			b.addActionListener(this);
-			b.setFocusable(false);
-			b.setOpaque(false);
-			b.setContentAreaFilled(false);
-			b.setBorderPainted(false);
-			backgroundLabel.add(b);
-		}
-		public void makeLabel(JLabel l) {
-			l.setForeground(Color.white);
-			l.setFont(textFont);
-		}
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource() == gameStart) {
-//				new Game();
-//				clip.stop();
-//				f.dispose();
-				notYetMade();
-			} else if (e.getSource() == tutorial) {
-				notYetMade();
-			} else if (e.getSource() == leaderboard) {
-				notYetMade();
-			} else if (e.getSource() == exitGame) {
-				reprompt();
+	public void makeButton(JButton b) {
+		b.setFont(biggerFont);
+		b.setForeground(Color.white);
+		b.setBackground(new Color(36, 100, 187));
+		b.addActionListener(this);
+		b.setFocusable(false);
+		b.setOpaque(false);
+		b.setContentAreaFilled(false);
+		b.setBorderPainted(false);
+		backgroundLabel.add(b);
+	}
+	public void makeLabel(JLabel l) {
+		l.setForeground(Color.white);
+		l.setFont(textFont);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == gameStart) {
+			//new Game();
+			//clip.stop();
+			//f.dispose();
+			notYetMade();
+		} else if (e.getSource() == tutorial) {
+			notYetMade();
+		} else if (e.getSource() == leaderboard) {
+			notYetMade();
+		} else if (e.getSource() == exitGame) {
+			reprompt();
+		} else if (e.getSource() == changePassword) {
+			if(!changedPass) {
+				try {
+					new changePassword();
+					changedPass = true;
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			} else {
+				JOptionPane.showMessageDialog(f, "You've already changed your password!");
 			}
-			
 		}
-		
-		public void reprompt() {
-			int result = JOptionPane.showConfirmDialog(f,
-			        "Are you sure you want to quit?",
-			        "Confirm Quit", JOptionPane.YES_NO_CANCEL_OPTION);
-			if (result == JOptionPane.YES_OPTION) System.exit(0);
-		}
-		public void notYetMade() {
-			JOptionPane.showMessageDialog(f, "Hey! This hasn't been added to our game yet!");
-		}
+
+	}
+
+	public void reprompt() {
+		int result = JOptionPane.showConfirmDialog(f,
+				"Are you sure you want to quit?",
+				"Confirm Quit", JOptionPane.YES_NO_CANCEL_OPTION);
+		if (result == JOptionPane.YES_OPTION) System.exit(0);
+	}
+	public void notYetMade() {
+		JOptionPane.showMessageDialog(f, "Hey! This hasn't been added to our game yet!");
+	}
 }

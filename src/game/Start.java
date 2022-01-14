@@ -28,7 +28,7 @@ public class Start extends JFrame implements ActionListener {
 	private BufferedWriter out;
 	public static String[][] accounts = new String[2][100000];
 	String[] users, passwords;
-	int numOfUsers;
+	static int numOfUsers;
 	public static String curUser;
 	public static String curPass;
 	Font buttonFont = new Font("Comic Sans",Font.BOLD, 14);
@@ -66,12 +66,8 @@ public class Start extends JFrame implements ActionListener {
 		register = new JButton("Register");
 		register.setBounds(590,520,100,30);
 		makeButton(register);
-		changePassword = new JButton("Change Password");
-		changePassword.setBounds(542, 560, 200, 30);
-		changePasswordButton(changePassword);
 		backgroundLabel.add(userName);
 		backgroundLabel.add(password);
-		backgroundLabel.add(changePassword);
 		f.setSize(1280,972);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,6 +88,9 @@ public class Start extends JFrame implements ActionListener {
 		}
 		out.newLine();
 		out.close();
+	}
+	public static int getUsers() {
+		return numOfUsers;
 	}
 	public static String getUser() {
 		return curUser;
@@ -185,15 +184,6 @@ public class Start extends JFrame implements ActionListener {
 			e.printStackTrace();
 		}	
 		
-	}
-	private void changePasswordButton(JButton b) {
-		b.addActionListener(this);
-		b.setFont(buttonFont);
-		b.setForeground(new Color(5, 60, 200));
-		b.setFocusable(false);
-		b.setOpaque(false);
-		b.setContentAreaFilled(false);
-		b.setBorderPainted(false);
 	}
 	
 	private void printAccounts() {
