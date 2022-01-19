@@ -100,7 +100,15 @@ public class MainMenu implements ActionListener{
 		} else if (e.getSource() == tutorial) {
 			notYetMade();
 		} else if (e.getSource() == leaderboard) {
-			notYetMade();
+			try {
+				new Leaderboard();
+				f.dispose();
+				clip.stop();
+			} catch (FontFormatException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		} else if (e.getSource() == exitGame) {
 			reprompt();
 		} else if (e.getSource() == changePassword) {

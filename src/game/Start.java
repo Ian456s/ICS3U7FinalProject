@@ -26,8 +26,8 @@ public class Start extends JFrame implements ActionListener {
 	private String fileName = "accounts.txt";
 	private BufferedReader in;
 	private BufferedWriter out;
-	public static String[][] accounts = new String[2][100000];
-	String[] users, passwords;
+	public static String[][] accounts = new String[3][100000];
+	String[] users, passwords, scores;
 	static int numOfUsers;
 	public static String curUser;
 	public static String curPass;
@@ -43,10 +43,12 @@ public class Start extends JFrame implements ActionListener {
 		//reading in usernames and passwords
 		users = in.readLine().split(" ");
 		passwords = in.readLine().split(" ");
+		scores = in.readLine().split(" ");
 		numOfUsers = users.length;
 		for(int i = 0; i < numOfUsers; i++) {
 			accounts[0][i] = users[i];
 			accounts[1][i] = passwords[i];
+			accounts[2][i] = scores[i];
 		}
 		background = new ImageIcon(this.getClass().getResource("/background.jpg"));
 		backgroundLabel = new JLabel(background);
@@ -85,6 +87,9 @@ public class Start extends JFrame implements ActionListener {
 
 		for(int i = 0; i < numOfUsers; i++) {
 			out.write(accounts[1][i] + " ");
+		}
+		for(int i = 0; i < numOfUsers; i++) {
+			out.write(accounts[2][i] + " ");
 		}
 		out.newLine();
 		out.close();
@@ -185,16 +190,7 @@ public class Start extends JFrame implements ActionListener {
 		}	
 		
 	}
-	
-	private void printAccounts() {
-		for(int i = 0; i < 2; i++) {
-			for(int j = 0; j < numOfUsers; j++) {
-				System.out.print(accounts[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
-	
+		
 	private boolean userCheck() {
 
 		for(int j = 0; j < numOfUsers; j++) {
