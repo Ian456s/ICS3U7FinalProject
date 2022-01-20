@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.*;
+import java.net.URL;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -29,12 +30,12 @@ public class MainMenu implements ActionListener{
 		new MainMenu();
 	}
 	MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
-		background = new ImageIcon(this.getClass().getResource("/mainMenuBackground.jpg"));
+		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		clip = AudioSystem.getClip();
-		clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("OurLostFriend.wav").getPath())));
+        clip.open(AudioSystem.getAudioInputStream(new File(getClass().getResource("/OurLostFriend.wav").getPath())));
 		changedPass = false;
 		f = new JFrame("Our Lost Friend - Main Menu - Ian Tang & Naveed Khan");
 		backgroundLabel = new JLabel(background);
@@ -93,10 +94,13 @@ public class MainMenu implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == gameStart) {
-			//new Game();
-			//clip.stop();
-			//f.dispose();
-			notYetMade();
+			try {
+				new Game();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			clip.stop();
+			f.dispose();
 		} else if (e.getSource() == tutorial) {
 			notYetMade();
 		} else if (e.getSource() == leaderboard) {
