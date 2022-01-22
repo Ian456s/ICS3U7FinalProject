@@ -66,7 +66,7 @@ public class MainMenu implements ActionListener{
 		makeButton(exitGame);
 		makeButton(changePassword);
 		f.setLayout(null);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		f.setVisible(true);
 		f.setLocationRelativeTo(null);
 		clip.loop(Clip.LOOP_CONTINUOUSLY);

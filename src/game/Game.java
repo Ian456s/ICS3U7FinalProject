@@ -1,15 +1,13 @@
 package game;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 
-public class Game implements ActionListener {
+public class Game extends JFrame {
+	private static final long serialVersionUID = 1L;
 	static int numUsers = Start.getUsers();
 	static PlayerType[] players = new PlayerType[numUsers];
 	static String[][] accounts = Start.getAccounts();
@@ -17,14 +15,13 @@ public class Game implements ActionListener {
 	static int userNum;
 	String fileName = "accounts.txt";
 	BufferedWriter out;
-	JFrame frame;
+	static JFrame frame;
 	
 	public Game() throws IOException {
 		frame = new JFrame("Platformer");
 		frame.setSize(1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		frame.setLayout(null);
 		frame.add(new GamePanel(), BorderLayout.CENTER);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
@@ -32,10 +29,6 @@ public class Game implements ActionListener {
 	
 	public static int getUserScore(String username) {
 		return players[userNum].getScore();
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		
 	}
 
 	public static PlayerType[] getPlayers() {
@@ -52,5 +45,8 @@ public class Game implements ActionListener {
 		players[userNum].setScore(updatedScore);
 	}
 
+	public static void close() {
+		frame.dispose();
+	}
 	
 }

@@ -10,7 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GameManager {
 	
-	private Stack<GameState> states;
+	public Stack<GameState> states;
 	public GameManager() {
 		states = new Stack<GameState>();
 		states.push(new MenuState(this));

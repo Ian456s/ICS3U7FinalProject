@@ -3,17 +3,19 @@ package game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import javax.imageio.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 public class MenuState extends GameState {
-
-	private String[] buttons = {"Resume", "Quit"};
+	private static int level = 1;
+	private String[] buttons = {"Start Level", "Quit"};
 	private int currentSelection = 0;
 	Font buttonFont;
 	Font biggerFont;
+	Image background;
 	public MenuState(GameManager gm) {
 		super(gm);
 	}
@@ -26,7 +28,8 @@ public class MenuState extends GameState {
 	}
 
 	public void draw(Graphics g) throws FontFormatException, IOException {
-		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
+		background = ImageIO.read(this.getClass().getResource("/mainMenuBackground.jpg"));
+		g.drawImage(background, 0, 0, null);
 		for(int i = 0; i < buttons.length; i++) {
 			if(i == currentSelection) {
 				g.setColor(Color.green);
@@ -56,9 +59,10 @@ public class MenuState extends GameState {
 		
 		if(k == KeyEvent.VK_ENTER) {
 			if(currentSelection == 0) {
-				//play
+				gm.states.push(new Level1State(gm));
 			} else if(currentSelection == 1) {
 				new MainMenu();
+				Game.close();
 			}
 		}
 	}

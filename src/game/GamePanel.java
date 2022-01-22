@@ -84,7 +84,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			e1.printStackTrace();
 		}
 	}
-
+	
 	
 	public void keyReleased(KeyEvent e) {
 		gm.keyReleased(e.getKeyCode());
