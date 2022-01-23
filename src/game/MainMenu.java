@@ -35,7 +35,7 @@ public class MainMenu implements ActionListener{
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(new File(getClass().getResource("/OurLostFriend.wav").getPath())));
+        clip.open(AudioSystem.getAudioInputStream(new File(getClass().getResource("OurLostFriend.wav").getPath())));
 		changedPass = false;
 		f = new JFrame("Our Lost Friend - Main Menu - Ian Tang & Naveed Khan");
 		backgroundLabel = new JLabel(background);
