@@ -8,9 +8,18 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public abstract class GameState {
+	
 	protected GameManager gm;
+	public static double xOffset;
+	public static double yOffset;
+	
 	public GameState(GameManager gm) {
 		this.gm = gm;
+		
+		xOffset = 0;
+		yOffset = 0;
+		
+		
 		init();
 	}
 	
