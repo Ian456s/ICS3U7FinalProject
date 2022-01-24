@@ -44,7 +44,7 @@ public class Player {
 	}
 
 	public void tick(Block[][] b, ArrayList<MovingBlock> movingBlocks) {
-
+		
 		int iX = (int)x;
 		int iY = (int)y;
 		for(int i = 0; i < b.length; i++) {
@@ -163,7 +163,7 @@ public class Player {
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, width, height);
 	}
 

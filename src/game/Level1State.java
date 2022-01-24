@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -18,7 +19,6 @@ public class Level1State extends GameState{
 	private Player player;
 	private Block[] b;
 	private Map map;
-	Image background;
 	public Level1State(GameManager gm) {
 		super(gm);
 		
