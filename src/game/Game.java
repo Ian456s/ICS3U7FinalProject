@@ -19,7 +19,7 @@ public class Game extends JFrame {
 	static JFrame frame;
 	
 	public Game() throws IOException {
-		frame = new JFrame("Platformer");
+		frame = new JFrame("Our Lost Friend");
 		frame.setSize(1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);

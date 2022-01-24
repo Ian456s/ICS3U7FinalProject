@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
@@ -66,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		super.paintComponent(g);
 		
 		g.clearRect(0, 0, WIDTH, HEIGHT);
-		
+	
 		try {
 			gm.draw(g);
 		} catch (FontFormatException | IOException e) {

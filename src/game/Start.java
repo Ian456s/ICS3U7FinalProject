@@ -98,6 +98,7 @@ public class Start extends JFrame implements ActionListener {
 		for(int i = 0; i < numOfUsers; i++) {
 			out.write(accounts[1][i] + " ");
 		}
+		out.newLine();
 		for(int i = 0; i < numOfUsers; i++) {
 			out.write(accounts[2][i] + " ");
 		}

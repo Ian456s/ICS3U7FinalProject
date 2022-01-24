@@ -21,10 +21,9 @@ public class TitleScreen implements ActionListener {
 	Font buttonFont, biggerFont;
 	ImageIcon background, Title;
 	private Clip clip;
-	public static void main(String[] args) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
-		new TitleScreen();
-	}
+	
 	TitleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
+		//initializing variables
 		background = new ImageIcon(this.getClass().getResource("/forest.jpg"));
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
@@ -32,7 +31,7 @@ public class TitleScreen implements ActionListener {
 		clip = AudioSystem.getClip();
         clip.open(AudioSystem.getAudioInputStream(new File(getClass().getResource("bgm.wav").getPath())));
 		f = new JFrame("Our Lost Friend - Title");
-		backgroundLabel = new JLabel(background);
+		 backgroundLabel = new JLabel(background);
 		titleLabel = new JLabel(Title);
 		f.setSize(1280, 720);
 		backgroundLabel.setSize(1280, 720);

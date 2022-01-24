@@ -26,9 +26,7 @@ public class MainMenu implements ActionListener{
 	boolean changedPass;
 	Clip clip;
 	ImageIcon background, Title;
-	public static void main(String[] args) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
-		new MainMenu();
-	}
+	
 	MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
