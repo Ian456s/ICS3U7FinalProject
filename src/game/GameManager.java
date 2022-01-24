@@ -20,7 +20,6 @@ public class GameManager {
 	}
 	
 	public void draw(Graphics g) throws FontFormatException, IOException {
-		
 		states.peek().draw(g);
 	}
 	

@@ -7,17 +7,18 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import game.GameManager;
 import game.GamePanel;
 import game.GameState;
+import game.MenuState;
 import game.objects.Block;
 import game.objects.MovingBlock;
 import game.physics.Collision;
 
 public class Player {
 
-
 	//movement booleans
-	private boolean right = false, left = false, jumping = false, falling = false;
+	private boolean right = false, left = false, jumping = false, falling = false, paused = false;
 	private boolean topCollision = false;
 	//bounds
 	private double x, y;
@@ -154,6 +155,7 @@ public class Player {
 		if(!falling) {
 			currentFallSpeed = 0.1;
 		}
+		
 	}
 
 	public void draw(Graphics g) {

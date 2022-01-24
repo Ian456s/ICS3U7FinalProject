@@ -24,7 +24,6 @@ public class MenuState extends GameState {
 
 	public void tick() {
 		
-		
 	}
 
 	public void draw(Graphics g) throws FontFormatException, IOException {
