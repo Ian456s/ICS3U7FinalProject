@@ -4,11 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.*;
 public class Images {
-	private BufferedImage[] blocks;
+	public static BufferedImage[] blocks;
 	public Images() {
-		blocks = new BufferedImage[1];
+		blocks = new BufferedImage[2];
 		try {
-			blocks[0] = ImageIO.read(getClass().getResourceAsStream(""));
+			blocks[0] = ImageIO.read(getClass().getResourceAsStream("/Blocks/grass.jpg"));
+			blocks[1] = ImageIO.read(getClass().getResourceAsStream("/Blocks/movingBlock.png")); 
 		} catch (IOException e) {		
 			e.printStackTrace();
 		}

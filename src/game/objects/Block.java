@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import game.GameState;
+import game.sprites.Images;
 
 public class Block extends Rectangle{
 	private static final long serialVersionUID = 1L;
@@ -22,7 +23,7 @@ public class Block extends Rectangle{
 	public void draw(Graphics g) {
 		g.setColor(Color.black);
 		if(id != 0) {
-			g.fillRect(x - (int)GameState.xOffset, y - (int)GameState.yOffset, width, height);
+			g.drawImage(Images.blocks[id-1], x - (int)GameState.xOffset, y - (int)GameState.yOffset, width, height, null);
 		}
 	}
 	

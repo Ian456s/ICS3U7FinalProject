@@ -9,6 +9,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+import game.sprites.Images;
+
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		addKeyListener(this);
 		setFocusable(true);
-		
+		new Images();
 		start();
 	}
 	
@@ -66,7 +68,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 		
 		try {
-			
 			gm.draw(g);
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
