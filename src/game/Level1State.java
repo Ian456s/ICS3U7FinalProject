@@ -27,8 +27,8 @@ public class Level1State extends GameState{
 	public void init() {
 		player = new Player(32, 32);
 		map = new Map("/Maps/map1.map");
-		xOffset = -200;
-		yOffset = -1000;
+		xOffset = -795;
+		yOffset = -420;
 		
 	}
 
@@ -48,6 +48,7 @@ public class Level1State extends GameState{
 			throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {	
 		player.keyPressed(k);
 	}
+	
 	
 	public void keyReleased(int k) {		
 		player.keyReleased(k);

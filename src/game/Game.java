@@ -64,6 +64,7 @@ public class Game extends JFrame {
 
 	public static void close() {
 		frame.dispose();
+		
 	}
 	
 }

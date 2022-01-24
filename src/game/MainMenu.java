@@ -27,7 +27,7 @@ public class MainMenu implements ActionListener{
 	Clip clip;
 	ImageIcon background, Title;
 	
-	MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
+	public MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);

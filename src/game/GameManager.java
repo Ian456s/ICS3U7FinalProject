@@ -7,6 +7,8 @@ import java.util.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class GameManager {
 	
@@ -29,8 +31,7 @@ public class GameManager {
 	public void keyReleased(int k) {
 		states.peek().keyReleased(k);
 	}
-	public void mainMenu() {
+	public void restart() {
 		states.push(new Level1State(this));
-		
 	}
 }

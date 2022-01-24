@@ -28,6 +28,7 @@ public class MenuState extends GameState {
 
 	public void draw(Graphics g) throws FontFormatException, IOException {
 		background = ImageIO.read(this.getClass().getResource("/mainMenuBackground.jpg"));
+		g.clearRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g.drawImage(background, 0, 0, null);
 		for(int i = 0; i < buttons.length; i++) {
 			if(i == currentSelection) {

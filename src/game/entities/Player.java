@@ -1,15 +1,22 @@
 package game.entities;
 
 import java.awt.Color;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import game.Game;
 import game.GameManager;
 import game.GamePanel;
 import game.GameState;
+import game.MainMenu;
 import game.MenuState;
 import game.objects.Block;
 import game.objects.MovingBlock;
@@ -26,7 +33,7 @@ public class Player {
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 5;
+	private double moveSpeed = 3;
 
 	//jump speed
 	private double jumpSpeed = 5;
@@ -175,7 +182,7 @@ public class Player {
 	
 	public void death() {
 		gm = new GameManager();
-		gm.mainMenu();
+		gm.restart();
 	}
 	
 	public void keyReleased(int k) {
