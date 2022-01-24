@@ -19,6 +19,7 @@ public class Level1State extends GameState{
 	private Player player;
 	private Block[] b;
 	private Map map;
+	
 	public Level1State(GameManager gm) {
 		super(gm);
 		
@@ -29,13 +30,13 @@ public class Level1State extends GameState{
 		map = new Map("/Maps/map1.map");
 		xOffset = -795;
 		yOffset = -420;
-		
+		startX = xOffset;
+		startY = yOffset;
 	}
 
 	public void tick() {	
 		player.tick(map.getBlocks(), map.getMovingBlocks());
 		map.tick();
-		System.out.println(xOffset + ", " + yOffset);
 	}
 	
 	public void draw(Graphics g) throws FontFormatException, IOException {	

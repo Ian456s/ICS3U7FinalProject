@@ -181,8 +181,8 @@ public class Player {
 	}
 	
 	public void death() {
-		gm = new GameManager();
-		gm.restart();
+		GameState.xOffset = GameState.startX;
+		GameState.yOffset = GameState.startY;
 	}
 	
 	public void keyReleased(int k) {

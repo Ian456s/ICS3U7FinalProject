@@ -12,13 +12,15 @@ public abstract class GameState {
 	protected GameManager gm;
 	public static double xOffset;
 	public static double yOffset;
-	
+	public static double startX;
+	public static double startY;
 	public GameState(GameManager gm) {
 		this.gm = gm;
 		
 		xOffset = 0;
 		yOffset = 0;
-		
+		startX = 0;
+		startY = 0;
 		
 		init();
 	}
