@@ -23,9 +23,8 @@ public class changePassword implements ActionListener {
 	int numOfUsers = Start.getUsers();
 	String curUser, curPass, enteredUser, enteredPass;
 	Font buttonFont = new Font("Comic Sans",Font.BOLD, 14);
-	public static void main(String args[]) throws IOException {
-		new changePassword();
-	}
+	
+	
 	changePassword() throws IOException {
 		f = new JFrame("Password Change");
 		accounts = Start.getAccounts();

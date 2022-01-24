@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

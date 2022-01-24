@@ -29,4 +29,8 @@ public class GameManager {
 	public void keyReleased(int k) {
 		states.peek().keyReleased(k);
 	}
+	public void mainMenu() {
+		states.push(new Level1State(this));
+		
+	}
 }

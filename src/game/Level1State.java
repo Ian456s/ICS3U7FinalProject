@@ -35,6 +35,7 @@ public class Level1State extends GameState{
 	public void tick() {	
 		player.tick(map.getBlocks(), map.getMovingBlocks());
 		map.tick();
+		System.out.println(xOffset + ", " + yOffset);
 	}
 	
 	public void draw(Graphics g) throws FontFormatException, IOException {	

@@ -17,6 +17,7 @@ import game.physics.Collision;
 
 public class Player {
 
+	private GameManager gm;
 	//movement booleans
 	private boolean right = false, left = false, jumping = false, falling = false, paused = false;
 	private boolean topCollision = false;
@@ -150,6 +151,9 @@ public class Player {
 			if(currentFallSpeed < maxFallSpeed) {
 				currentFallSpeed += 0.1;
 			}
+			if(GameState.yOffset >= 500) {
+				death();
+			}
 		}
 
 		if(!falling) {
@@ -168,7 +172,12 @@ public class Player {
 		if(k == KeyEvent.VK_A)left = true;
 		if(k == KeyEvent.VK_SPACE && !jumping & !falling)jumping = true;
 	}
-
+	
+	public void death() {
+		gm = new GameManager();
+		gm.mainMenu();
+	}
+	
 	public void keyReleased(int k) {
 		if(k == KeyEvent.VK_D)right = false;
 		if(k == KeyEvent.VK_A)left = false; 
