@@ -2,6 +2,7 @@ package game;
 
 import java.awt.BorderLayout;
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -13,8 +14,8 @@ public class Game extends JFrame {
 	static String[][] accounts = Start.getAccounts();
 	String username = Start.getUser();
 	static int userNum;
-	String fileName = "accounts.txt";
-	BufferedWriter out;
+	static String fileName = "accounts.txt";
+	static BufferedWriter out;
 	static JFrame frame;
 	
 	public Game() throws IOException {
@@ -43,6 +44,21 @@ public class Game extends JFrame {
 	
 	public static void saveScore(int updatedScore) {
 		players[userNum].setScore(updatedScore);
+		accounts[userNum][2] = updatedScore + "";
+	}
+	
+	public static void saveData() {
+		try {
+			out = new BufferedWriter(new FileWriter(fileName));
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < numUsers; j++) {
+					out.write(accounts[i][j]);
+				}
+				out.newLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void close() {

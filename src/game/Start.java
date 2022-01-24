@@ -22,7 +22,9 @@ public class Start extends JFrame implements ActionListener {
 	private JButton login;
 	private JButton register;
 	private JButton changePassword;
-	private JTextArea userName, password;
+	private JLabel userLabel, passLabel;
+	private JTextArea userName; 
+	private JPasswordField password;
 	private String fileName = "accounts.txt";
 	private BufferedReader in;
 	private BufferedWriter out;
@@ -58,10 +60,16 @@ public class Start extends JFrame implements ActionListener {
 		JLabel newPlayer = new JLabel("New to the game? Register now!");
 		newPlayer.setBounds(555, 480, 300, 30);
 		backgroundLabel.add(newPlayer);
-		userName = new JTextArea("Username");
-		userName.setBounds(500, 350, 300, 30);
-		password = new JTextArea("Password");
-		password.setBounds(500, 390, 300, 30);
+		userName = new JTextArea();
+		userName.setBounds(500, 355, 300, 20);
+		userLabel = new JLabel("Username: ");
+		userLabel.setBounds(418, 350, 300, 30);
+		userLabel.setFont(buttonFont);
+		password = new JPasswordField();
+		password.setBounds(500, 395, 300, 20);
+		passLabel = new JLabel("Password: ");
+		passLabel.setBounds(420, 390, 300, 30);
+		passLabel.setFont(buttonFont);
 		login = new JButton("Login");
 		login.setBounds(590, 440, 100, 30);
 		makeButton(login);
@@ -70,6 +78,8 @@ public class Start extends JFrame implements ActionListener {
 		makeButton(register);
 		backgroundLabel.add(userName);
 		backgroundLabel.add(password);
+		backgroundLabel.add(userLabel);
+		backgroundLabel.add(passLabel);
 		f.setSize(1280,972);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,6 +119,7 @@ public class Start extends JFrame implements ActionListener {
 	public void addUser() throws IOException {
 		accounts[0][numOfUsers] = curUser;
 		accounts[1][numOfUsers] = curPass;
+		accounts[2][numOfUsers] = "0";
 		numOfUsers++;
 		saveUsers();
 	}
@@ -127,8 +138,8 @@ public class Start extends JFrame implements ActionListener {
 	}
 
 	public void register() throws FontFormatException {
-		curUser = userName.getText();
-		curPass = password.getText();
+		curUser = userName.getText().trim();
+		curPass = password.getText().trim();
 		try {
 			if(Arrays.asList(accounts[0]).contains(curUser)){
 				JOptionPane.showMessageDialog(this, "Error: An account with this username already exists.");
