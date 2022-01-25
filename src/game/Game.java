@@ -2,10 +2,13 @@ package game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FontFormatException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
 public class Game extends JFrame {
@@ -64,7 +67,11 @@ public class Game extends JFrame {
 
 	public static void close() {
 		frame.dispose();
-		
+		try {
+			new MainMenu();
+		} catch (IOException | LineUnavailableException | UnsupportedAudioFileException | FontFormatException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

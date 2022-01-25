@@ -61,7 +61,6 @@ public class MenuState extends GameState {
 			if(currentSelection == 0) {
 				gm.states.push(new Level1State(gm));
 			} else if(currentSelection == 1) {
-				new MainMenu();
 				Game.close();
 			}
 		}
