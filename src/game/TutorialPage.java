@@ -29,6 +29,7 @@ public class TutorialPage implements ActionListener {
 		titleLabel.setSize(980,60);
 		titleLabel.setBounds(180, 100, 1158, 97);
 		makeLabel(titleLabel);
+<<<<<<< HEAD
 		back = new JButton("Back to Main Menu");
 		makeBackButton(back);
 		text = new JLabel("When the game begins, you will be taken to a menu.  Navigate by using the");
@@ -37,6 +38,10 @@ public class TutorialPage implements ActionListener {
 		text2.setBounds(280, 285, 1300, 50);
 		text3 = new JLabel("In this game the objective is to get to the end of the level. Press the a and d keys to move and press the space bar to jump.");
 		text3.setBounds(280, 400, 1300, 50);
+=======
+		text = new JLabel("In this game the objective is to get to the end of the level. Press the a and d keys to move and press the space bar to jump.");
+		text.setBounds(200, 220, 1300, 180);
+>>>>>>> a095b5c8ea59495df1e8cd3fa4d0b53eb8a59b05
 		makeLabel(text);
 		makeLabel(text2);
 		makeLabel(text3);
