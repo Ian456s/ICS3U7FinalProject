@@ -11,30 +11,32 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 public class TutorialPage implements ActionListener {
-	
-	
+
+	JFrame f;
 	JButton back;
-	
-	
+	ImageIcon background;
+	JLabel backgroundLabel;
 	TutorialPage() throws FontFormatException, IOException {
-	
-	
-	back = new JButton("Back to Main Menu");
-	
-	
+		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
+		backgroundLabel = new JLabel(background);
+		f = new JFrame("Our Lost Friend - Tutorial");
+		f.add(backgroundLabel);
+		back = new JButton("Back to Main Menu");
+
+
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == back) {
-				try {
-					new MainMenu();
-					f.dispose();
-				} catch (IOException | LineUnavailableException | UnsupportedAudioFileException
-						| FontFormatException e1) {
-					e1.printStackTrace();
-				}
+			try {
+				new MainMenu();
+				f.dispose();
+			} catch (IOException | LineUnavailableException | UnsupportedAudioFileException
+					| FontFormatException e1) {
+				e1.printStackTrace();
+			}
 		}
-		
+
 	}
-	
+
 }
