@@ -14,7 +14,7 @@ public class TutorialPage implements ActionListener {
 	JFrame f;
 	JButton back;
 	ImageIcon background, Title;
-	JLabel backgroundLabel, titleLabel, text;
+	JLabel backgroundLabel, titleLabel, text, text2, text3;
 	Font buttonFont, biggerFont, textFont;
 	
 	TutorialPage() throws FontFormatException, IOException {
@@ -29,16 +29,20 @@ public class TutorialPage implements ActionListener {
 		titleLabel.setSize(980,60);
 		titleLabel.setBounds(180, 100, 1158, 97);
 		makeLabel(titleLabel);
-		text = new JLabel("In this game the objective is to get to the end of the level. Press the a and d keys to move and press the space bar to jump.");
-		text.setBounds(280, 220, 1300, 180);
+		back = new JButton("Back to Main Menu");
+		makeBackButton(back);
+		text = new JLabel("When the game begins, you will be taken to a menu.  Navigate by using the");
+		text.setBounds(280, 250, 1300, 30);
+		text2 = new JLabel("up and down arrow keys, as well as the enter key to select.");
+		text2.setBounds(280, 285, 1300, 50);
+		text3 = new JLabel("In this game the objective is to get to the end of the level. Press the a and d keys to move and press the space bar to jump.");
+		text3.setBounds(280, 400, 1300, 50);
 		makeLabel(text);
+		makeLabel(text2);
+		makeLabel(text3);
 		f = new JFrame("Our Lost Friend - Tutorial");
 		f.setSize(1600, 900);
-		f.add(backgroundLabel);
-		back = new JButton("Back to Main Menu");
 		
-		makeBackButton(back);
-		f.add(text);
 		f.add(titleLabel);
 		f.add(backgroundLabel);
 		f.setLayout(null);
@@ -76,6 +80,7 @@ public class TutorialPage implements ActionListener {
 	public void makeLabel(JLabel l) {
 		l.setFont(textFont);
 		l.setForeground(Color.white);
+		backgroundLabel.add(l);
 	}
 
 }
