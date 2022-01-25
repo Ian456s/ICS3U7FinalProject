@@ -100,7 +100,17 @@ public class MainMenu implements ActionListener{
 			clip.stop();
 			f.dispose();
 		} else if (e.getSource() == tutorial) {
-			notYetMade();
+			try {
+				new TutorialPage();
+				f.dispose();
+				clip.stop();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (FontFormatException e1) {
+				e1.printStackTrace();
+			}
+			clip.stop();
+			f.dispose();
 		} else if (e.getSource() == leaderboard) {
 			try {
 				new Leaderboard();
