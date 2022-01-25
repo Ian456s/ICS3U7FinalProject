@@ -14,7 +14,7 @@ public class TutorialPage implements ActionListener {
 	JFrame f;
 	JButton back;
 	ImageIcon background, Title;
-	JLabel backgroundLabel, titleLabel;
+	JLabel backgroundLabel, titleLabel, text;
 	
 	TutorialPage() throws FontFormatException, IOException {
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
@@ -23,6 +23,8 @@ public class TutorialPage implements ActionListener {
 		titleLabel = new JLabel(Title);
 		titleLabel.setSize(980,60);
 		titleLabel.setBounds(180, 100, 1158, 97);
+		text = new JLabel("In this game the objective is to get to the end of the level. Press the a and d keys to move and press the space bar to jump.");
+		text.setBounds(300, 250, 700, 180);
 		f = new JFrame("Our Lost Friend - Tutorial");
 		f.setSize(1600, 900);
 		f.add(backgroundLabel);
@@ -30,7 +32,7 @@ public class TutorialPage implements ActionListener {
 		back.setBounds(600, 500, 300, 60);
 		backgroundLabel.setSize(1600, 900);
 		
-		
+		makeLabel(text);
 		makeLabel(titleLabel);
 		
 		
@@ -40,6 +42,7 @@ public class TutorialPage implements ActionListener {
 		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		f.setVisible(true);
 		f.setLocationRelativeTo(null);
+		f.add(text);
 		f.add(titleLabel);
 		f.add(backgroundLabel);
 	}
