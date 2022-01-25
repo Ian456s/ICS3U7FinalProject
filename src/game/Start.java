@@ -182,12 +182,16 @@ public class Start extends JFrame implements ActionListener {
 				login();
 			} catch (FontFormatException e1) {
 				e1.printStackTrace();
+			} catch (NullPointerException e1) {
+				System.out.println("Error, please move the files bgm.wav and OurLostFriend.wav to the \"game\" folder within \"bin\".");
 			}
 		} else if (e.getSource() == register) {
 			try {
 				register();
 			} catch (FontFormatException e1) {
 				e1.printStackTrace();
+			} catch (NullPointerException e1) {
+				System.out.println("Error, please move the files bgm.wav and OurLostFriend.wav to the \"game\" folder within \"bin\".");
 			}
 		} else if(e.getSource() == changePassword) {
 				changePassword();
