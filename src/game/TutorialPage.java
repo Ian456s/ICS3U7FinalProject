@@ -30,7 +30,7 @@ public class TutorialPage implements ActionListener {
 		titleLabel.setBounds(180, 100, 1158, 97);
 		makeLabel(titleLabel);
 		text = new JLabel("In this game the objective is to get to the end of the level. Press the a and d keys to move and press the space bar to jump.");
-		text.setBounds(280, 220, 1300, 180);
+		text.setBounds(200, 220, 1300, 180);
 		makeLabel(text);
 		f = new JFrame("Our Lost Friend - Tutorial");
 		f.setSize(1600, 900);
