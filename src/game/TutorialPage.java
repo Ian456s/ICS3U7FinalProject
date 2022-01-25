@@ -17,17 +17,20 @@ public class TutorialPage implements ActionListener {
 	JLabel backgroundLabel, titleLabel;
 	
 	TutorialPage() throws FontFormatException, IOException {
-		
+		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
 		backgroundLabel = new JLabel(background);
+		titleLabel = new JLabel(Title);
+		titleLabel.setSize(980,60);
+		titleLabel.setBounds(180, 100, 1158, 97);
 		f = new JFrame("Our Lost Friend - Tutorial");
 		f.setSize(1600, 900);
 		f.add(backgroundLabel);
 		back = new JButton("Back to Main Menu");
 		back.setBounds(600, 500, 300, 60);
 		backgroundLabel.setSize(1600, 900);
-		Title = new ImageIcon(this.getClass().getResource("/title.png"));
-		titleLabel = new JLabel(Title);
+		
+		
 		makeLabel(titleLabel);
 		
 		
