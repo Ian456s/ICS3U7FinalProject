@@ -71,8 +71,9 @@ public class TitleScreen implements ActionListener {
 			} catch (UnsupportedAudioFileException e1) {
 				e1.printStackTrace();
 			} catch (FontFormatException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} catch (NullPointerException e1) {
+				System.out.println("Error, please move the files bgm.wav and OurLostFriend.wav to the \"game\" folder within \"bin\".");
 			}
 			
 		}
