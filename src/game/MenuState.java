@@ -10,7 +10,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 public class MenuState extends GameState {
-	private static int level = 1;
 	private String[] buttons = {"Start Level", "Quit"};
 	private int currentSelection = 0;
 	Font buttonFont;
