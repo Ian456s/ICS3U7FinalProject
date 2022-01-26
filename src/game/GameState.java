@@ -14,6 +14,7 @@ public abstract class GameState {
 	public static double yOffset;
 	public static double startX;
 	public static double startY;
+	public static double farthest;
 	public GameState(GameManager gm) {
 		this.gm = gm;
 		
@@ -21,7 +22,7 @@ public abstract class GameState {
 		yOffset = 0;
 		startX = 0;
 		startY = 0;
-		
+		farthest = 0;
 		init();
 	}
 	

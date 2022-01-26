@@ -1,6 +1,7 @@
 package game.entities;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -18,6 +19,7 @@ import game.GamePanel;
 import game.GameState;
 import game.MainMenu;
 import game.MenuState;
+import game.Start;
 import game.objects.Block;
 import game.objects.MovingBlock;
 import game.physics.Collision;
@@ -26,6 +28,7 @@ public class Player {
 
 	private GameManager gm;
 	private static int curLevel = 1;
+	private static int score = 0;
 	//movement booleans
 	private boolean right = false, left = false, jumping = false, falling = false, paused = false;
 	private boolean topCollision = false;
@@ -34,7 +37,7 @@ public class Player {
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 5;
+	private double moveSpeed = 20;
 
 	//jump speed
 	private double jumpSpeed = 5;
@@ -43,7 +46,7 @@ public class Player {
 	//fall speed
 	private double maxFallSpeed = 5;
 	private double currentFallSpeed = 0.1;
-
+	public String username = Start.getUser();
 	public Player(int width, int height) {
 		x = GamePanel.WIDTH/2;
 		y = GamePanel.HEIGHT/2;
@@ -136,6 +139,10 @@ public class Player {
 
 		if(right) {
 			GameState.xOffset += moveSpeed;
+			if(GameState.xOffset > GameState.farthest) {
+				GameState.farthest = GameState.xOffset;
+				score++;
+			}
 		}
 		if(left) {
 			GameState.xOffset -= moveSpeed;
@@ -167,12 +174,17 @@ public class Player {
 		if(!falling) {
 			currentFallSpeed = 0.1;
 		}
-		
+		if(score > Game.getUserScore(username)) {
+			Game.saveScore(score/10);
+			Game.saveData();
+		}
 	}
 
 	public void draw(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, width, height);
+		g.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		g.drawString("Score: " + score/10, 1400, 100);
 	}
 
 	public void keyPressed(int k) {
@@ -194,7 +206,9 @@ public class Player {
 	public static void setLevel(int l) {
 		curLevel = l;
 	}
-	
+	public static int getScore() {
+		return score;
+	}
 	public static int getLevel() {
 		return curLevel;
 	}

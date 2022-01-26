@@ -32,6 +32,7 @@ public class Level1State extends GameState{
 		yOffset = -420;
 		startX = xOffset;
 		startY = yOffset;
+		farthest = startX;
 	}
 
 	public void tick() {	

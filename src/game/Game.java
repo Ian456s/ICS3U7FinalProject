@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class Game extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static int numUsers = Start.getUsers();
-	static PlayerType[] players = new PlayerType[numUsers];
+	static PlayerType[] players;
 	static String[][] accounts = Start.getAccounts();
 	String username = Start.getUser();
 	static int userNum;
@@ -23,6 +23,11 @@ public class Game extends JFrame {
 	static JFrame frame;
 	
 	public Game() throws IOException {
+		players = new PlayerType[numUsers];
+		Game.getPlayers();
+		Game.getUserNum(username);
+		
+		
 		frame = new JFrame("Our Lost Friend");
 		frame.setSize(1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +53,7 @@ public class Game extends JFrame {
 	
 	public static void saveScore(int updatedScore) {
 		players[userNum].setScore(updatedScore);
-		accounts[userNum][2] = updatedScore + "";
+		accounts[2][userNum] = updatedScore + "";
 	}
 	
 	public static void saveData() {
@@ -56,15 +61,21 @@ public class Game extends JFrame {
 			out = new BufferedWriter(new FileWriter(fileName));
 			for(int i = 0; i < 3; i++) {
 				for(int j = 0; j < numUsers; j++) {
-					out.write(accounts[i][j]);
+					out.write(accounts[i][j] + " ");
 				}
 				out.newLine();
 			}
+			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
+	public static int getUserNum(String user) {
+		for(int i = 0; i < numUsers; i++) {
+			if(accounts[0][i].equals(user))return i;
+		}
+		return 0;
+	}
 	public static void close() {
 		frame.dispose();
 		try {
