@@ -37,7 +37,7 @@ public class TutorialPage implements ActionListener {
 		text2.setBounds(280, 285, 1300, 50);
 		text3 = new JLabel("objective is to get to the end of the level. Press the a and d keys to move and");
 		text3.setBounds(280, 320, 1300, 50);
-		text4 = new JLabel("press the space bar to jump.");
+		text4 = new JLabel("press the space bar to jump. When you get to the end of a level you will be taken");
 		text4.setBounds(280, 355, 1300, 50);
 		makeLabel(text);
 		makeLabel(text2);
