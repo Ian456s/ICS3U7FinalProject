@@ -39,6 +39,7 @@ public class Level1State extends GameState{
 		map.tick();
 		System.out.println(xOffset + ", " + yOffset);
 		if(xOffset > 12000) {
+			player.setLevel(2);
 			gm.states.push(new Level2State(gm));
 		}
 	}

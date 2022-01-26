@@ -25,6 +25,7 @@ import game.physics.Collision;
 public class Player {
 
 	private GameManager gm;
+	private static int curLevel = 1;
 	//movement booleans
 	private boolean right = false, left = false, jumping = false, falling = false, paused = false;
 	private boolean topCollision = false;
@@ -190,5 +191,12 @@ public class Player {
 		if(k == KeyEvent.VK_A)left = false; 
 	}
 
+	public static void setLevel(int l) {
+		curLevel = l;
+	}
+	
+	public static int getLevel() {
+		return curLevel;
+	}
 
 }

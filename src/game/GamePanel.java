@@ -10,6 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+import game.entities.Player;
 import game.sprites.Images;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
@@ -65,7 +66,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.black);
+		Color colors[] = {Color.black, new Color(200, 50, 50), new Color(50, 200, 50)};
+		g.setColor(colors[Player.getLevel()-1]);
 		g.drawRect(0, 0, WIDTH, HEIGHT);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		try {
