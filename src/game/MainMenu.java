@@ -30,7 +30,7 @@ public class MainMenu implements ActionListener{
 	public MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
-		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);
+		biggerFont = buttonFont.deriveFont(40f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		clip = AudioSystem.getClip();
         clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("OurLostFriend.wav").getPath())));

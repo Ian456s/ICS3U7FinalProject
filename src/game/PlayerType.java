@@ -20,10 +20,10 @@ public class PlayerType {
 		this.score = 0;
 	}
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 	public void setScore(int score) {
 		this.score = score;

@@ -32,12 +32,9 @@ public class Leaderboard implements ActionListener {
 		//initial declarations
 		background = new ImageIcon(this.getClass().getResource("/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
-		biggerFont = buttonFont.deriveFont(Font.BOLD, 40f);
+		biggerFont = buttonFont.deriveFont(Font.BOLD, 36f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		players = Game.getPlayers();
-		for(int i = 0; i < numUsers; i++) {
-			System.out.println(players[i].getName() + " " + players[i].getScore());
-		}
 		backgroundLabel = new JLabel(background);
 		backgroundLabel.setSize(1600, 900);
 		signedInAs = new JLabel("<html><p style=\"width:200px\">"+"Currently signed in as: <br>" + userName +"</p></html>");
@@ -49,6 +46,8 @@ public class Leaderboard implements ActionListener {
 		titleLabel = new JLabel(Title);
 		titleLabel.setSize(980,60);
 		titleLabel.setBounds(180, 100, 1158, 97);
+		scores = new JLabel();
+		displayLabel();
 		//button creation
 		back = new JButton("Back to Main Menu");
 		makeBackButton(back);
@@ -61,7 +60,32 @@ public class Leaderboard implements ActionListener {
 		f.add(backgroundLabel);
 
 	}
-
+	private void displayLabel() {
+		PlayerType.sortPlayers(players);
+		if(numUsers >= 10) {
+			for(int i = 9; i >= 0; i--) {
+				String score = 10-i + ". " + players[numUsers-(10-i)].getName() + ", " + players[numUsers-(10-i)].getScore();
+				scores = new JLabel(score);
+				scores.setBounds(600, (10-i)*50, 1000, 50);
+				makeTextLabel(scores);
+			}
+		}
+		if(numUsers < 10) {
+			for(int i = numUsers; i > 0; i--) {
+				String score = numUsers-i+1 + ". " + players[numUsers-(numUsers-i+1)].getName() + ", " + players[numUsers-(numUsers-i+1)].getScore();
+				scores = new JLabel(score);
+				scores.setBounds(600, (10-i)*50, 1000, 50);
+				makeTextLabel(scores);
+			}
+			
+		}
+		
+	}
+	private void makeTextLabel(JLabel l) {
+		l.setFont(biggerFont);
+		l.setForeground(Color.white);
+		backgroundLabel.add(l);
+	}
 	private void makeBackButton(JButton b) {
 		b.setFont(biggerFont);
 		b.setForeground(Color.white);
