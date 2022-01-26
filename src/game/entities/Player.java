@@ -2,23 +2,15 @@ package game.entities;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import game.Game;
 import game.GameManager;
 import game.GamePanel;
 import game.GameState;
-import game.MainMenu;
-import game.MenuState;
 import game.Start;
 import game.objects.Block;
 import game.objects.MovingBlock;
@@ -184,13 +176,19 @@ public class Player {
 		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, width, height);
 		g.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		g.drawString("Score: " + score/10, 1400, 100);
+		g.drawString("Score: " + score/10, 1400, 50);
 	}
 
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_D)right = true;
 		if(k == KeyEvent.VK_A)left = true;
 		if(k == KeyEvent.VK_SPACE && !jumping & !falling)jumping = true;
+		if(k == KeyEvent.VK_ESCAPE) {
+			GameState.menu();
+			GameState.xOffset = GameState.startX;
+			GameState.yOffset = GameState.startY;
+			score = 0;
+		}
 	}
 	
 	public void death() {

@@ -9,7 +9,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public abstract class GameState {
 	
-	protected GameManager gm;
+	protected static GameManager gm;
 	public static double xOffset;
 	public static double yOffset;
 	public static double startX;
@@ -31,4 +31,8 @@ public abstract class GameState {
 	public abstract void draw(Graphics g) throws FontFormatException, IOException;
 	public abstract void keyPressed(int k) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException;
 	public abstract void keyReleased(int k);
+	
+	public static void menu() {
+		gm.states.push(new MenuState(gm));
+	}
 }

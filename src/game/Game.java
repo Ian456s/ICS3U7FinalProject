@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class Game extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static int numUsers = Start.getUsers();
-	static PlayerType[] players;
+	public static PlayerType[] players = new PlayerType[numUsers];
 	static String[][] accounts = Start.getAccounts();
 	String username = Start.getUser();
 	static int userNum;
@@ -23,11 +23,8 @@ public class Game extends JFrame {
 	static JFrame frame;
 	
 	public Game() throws IOException {
-		players = new PlayerType[numUsers];
 		Game.getPlayers();
 		Game.getUserNum(username);
-		
-		
 		frame = new JFrame("Our Lost Friend");
 		frame.setSize(1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

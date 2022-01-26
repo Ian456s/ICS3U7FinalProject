@@ -27,7 +27,7 @@ public class Leaderboard implements ActionListener {
 	ImageIcon background, Title;
 	JButton back;
 	PlayerType[] topScores = new PlayerType[10];
-	static PlayerType[] players = new PlayerType[numUsers];
+	public static PlayerType[] players;
 	Leaderboard() throws FontFormatException, IOException {
 		//initial declarations
 		background = new ImageIcon(this.getClass().getResource("/mainMenuBackground.jpg"));
@@ -52,7 +52,6 @@ public class Leaderboard implements ActionListener {
 		//button creation
 		back = new JButton("Back to Main Menu");
 		makeBackButton(back);
-		
 		backgroundLabel.add(signedInAs);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,9 +60,6 @@ public class Leaderboard implements ActionListener {
 		f.add(titleLabel);
 		f.add(backgroundLabel);
 
-	}
-	public static void main(String[] args) throws FontFormatException, IOException {
-		new Leaderboard();
 	}
 
 	private void makeBackButton(JButton b) {
