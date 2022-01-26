@@ -33,7 +33,7 @@ public class Player {
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 10;
+	private double moveSpeed = 5;
 
 	//jump speed
 	private double jumpSpeed = 5;
@@ -65,8 +65,8 @@ public class Player {
 						right = false;
 					}
 					//left side collision
-					if(Collision.playerBlock(new Point(iX+(int)GameState.xOffset - 1, iY + (int)GameState.yOffset + 2), b[i][j]) 
-							|| Collision.playerBlock(new Point(iX + (int)GameState.xOffset - 1, iY+height+ (int)GameState.yOffset - 1), b[i][j])) {
+					if(Collision.playerBlock(new Point(iX+(int)GameState.xOffset, iY + (int)GameState.yOffset + 2), b[i][j]) 
+							|| Collision.playerBlock(new Point(iX + (int)GameState.xOffset, iY+height+ (int)GameState.yOffset - 2), b[i][j])) {
 						left = false;
 					}
 					//top
