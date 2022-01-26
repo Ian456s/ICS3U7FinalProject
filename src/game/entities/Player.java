@@ -20,7 +20,7 @@ public class Player {
 
 	private GameManager gm;
 	private static int curLevel = 1;
-	private static int score = 0;
+	private static double score = 0;
 	//movement booleans
 	private boolean right = false, left = false, jumping = false, falling = false, paused = false;
 	private boolean topCollision = false;
@@ -133,7 +133,7 @@ public class Player {
 			GameState.xOffset += moveSpeed;
 			if(GameState.xOffset > GameState.farthest) {
 				GameState.farthest = GameState.xOffset;
-				score++;
+				score+=0.1;
 			}
 		}
 		if(left) {
@@ -167,7 +167,7 @@ public class Player {
 			currentFallSpeed = 0.1;
 		}
 		if(score > Game.getUserScore(username)) {
-			Game.saveScore(score/10);
+			Game.saveScore((int) (score));
 			Game.saveData();
 		}
 	}
@@ -176,7 +176,7 @@ public class Player {
 		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, width, height);
 		g.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		g.drawString("Score: " + score/10, 1400, 50);
+		g.drawString("Score: " + (int)score, 1400, 50);
 	}
 
 	public void keyPressed(int k) {
@@ -205,7 +205,7 @@ public class Player {
 		curLevel = l;
 	}
 	public static int getScore() {
-		return score;
+		return (int)score;
 	}
 	public static int getLevel() {
 		return curLevel;
