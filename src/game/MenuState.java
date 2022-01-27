@@ -7,7 +7,6 @@ import javax.imageio.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.ImageIcon;
 
 public class MenuState extends GameState {
 	private String[] buttons = {"Start Level", "Quit"};
@@ -25,7 +24,7 @@ public class MenuState extends GameState {
 		
 	}
 
-	public void draw(Graphics g) throws FontFormatException, IOException {
+	public void draw(@SuppressWarnings("exports") Graphics g) throws FontFormatException, IOException {
 		background = ImageIO.read(this.getClass().getResource("/Backgrounds/mainMenuBackground.jpg"));
 		g.clearRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g.drawImage(background, 0, 0, null);

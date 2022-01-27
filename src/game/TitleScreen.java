@@ -58,7 +58,7 @@ public class TitleScreen implements ActionListener {
 		
 	}
 	
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == continueButton) {
 			try {
 				new MainMenu();

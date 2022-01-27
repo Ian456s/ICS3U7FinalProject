@@ -16,7 +16,7 @@ public abstract class GameState {
 	public static double startY;
 	public static double farthest;
 	public GameState(GameManager gm) {
-		this.gm = gm;
+		GameState.gm = gm;
 		
 		xOffset = 0;
 		yOffset = 0;
@@ -28,7 +28,7 @@ public abstract class GameState {
 	
 	public abstract void init();
 	public abstract void tick();
-	public abstract void draw(Graphics g) throws FontFormatException, IOException;
+	public abstract void draw(@SuppressWarnings("exports") Graphics g) throws FontFormatException, IOException;
 	public abstract void keyPressed(int k) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException;
 	public abstract void keyReleased(int k);
 	

@@ -5,10 +5,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.*;
-import java.net.URL;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -75,7 +72,7 @@ public class MainMenu implements ActionListener{
 		f.add(backgroundLabel);
 
 	}
-	public void makeButton(JButton b) {
+	public void makeButton(@SuppressWarnings("exports") JButton b) {
 		b.setFont(biggerFont);
 		b.setForeground(Color.white);
 		b.setBackground(new Color(36, 100, 187));
@@ -86,11 +83,11 @@ public class MainMenu implements ActionListener{
 		b.setBorderPainted(false);
 		backgroundLabel.add(b);
 	}
-	public void makeLabel(JLabel l) {
+	public void makeLabel(@SuppressWarnings("exports") JLabel l) {
 		l.setForeground(Color.white);
 		l.setFont(textFont);
 	}
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == gameStart) {
 			try {
 				new Game();

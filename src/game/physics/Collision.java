@@ -4,7 +4,11 @@ import java.awt.Point;
 
 import game.objects.Block;
 import game.objects.MovingBlock;
-
+/**
+ * Collision method to check if the player is currently making contact to a block
+ * @author Ian Tang
+ *
+ */
 public class Collision {
 	/**
 	 * playerBlock method for checking if the player is making contact with a block

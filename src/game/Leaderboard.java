@@ -5,10 +5,6 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -98,8 +94,7 @@ public class Leaderboard implements ActionListener {
 		b.setBounds(60, 650, 500, 100);
 		backgroundLabel.add(b);
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == back) {
 				try {
 					new MainMenu();

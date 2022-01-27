@@ -57,7 +57,7 @@ public class TutorialPage implements ActionListener {
 		f.setLocationRelativeTo(null);
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == back) {
 			try {
 				new MainMenu();
@@ -83,7 +83,7 @@ public class TutorialPage implements ActionListener {
 		backgroundLabel.add(b);
 	}
 	
-	public void makeLabel(JLabel l) {
+	public void makeLabel(@SuppressWarnings("exports") JLabel l) {
 		l.setFont(textFont);
 		l.setForeground(Color.white);
 		backgroundLabel.add(l);

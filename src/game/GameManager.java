@@ -4,11 +4,8 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.io.IOException;
 import java.util.*;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class GameManager {
 	
@@ -21,7 +18,7 @@ public class GameManager {
 		states.peek().tick();
 	}
 	
-	public void draw(Graphics g) throws FontFormatException, IOException {
+	public void draw(@SuppressWarnings("exports") Graphics g) throws FontFormatException, IOException {
 		states.peek().draw(g);
 	}
 	

@@ -3,14 +3,10 @@ package game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-
 import game.entities.Player;
 import game.sprites.Images;
 
@@ -66,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		gm.tick();
 	}
 	
-	public void paintComponent(Graphics g) {
+	public void paintComponent(@SuppressWarnings("exports") Graphics g) {
 		super.paintComponent(g);
 		Color colors[] = {Color.black, new Color(214, 178, 15), new Color(77, 86, 255)};
 		g.setColor(colors[Player.getLevel()-1]);
@@ -81,11 +77,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		}
 	}
 	
-	public void keyTyped(KeyEvent e) {
+	public void keyTyped(@SuppressWarnings("exports") KeyEvent e) {
 		
 	}
 
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(@SuppressWarnings("exports") KeyEvent e) {
 		try {
 			gm.keyPressed(e.getKeyCode());
 		} catch (IOException | LineUnavailableException | UnsupportedAudioFileException | FontFormatException e1) {
@@ -94,7 +90,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	}
 	
 	
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(@SuppressWarnings("exports") KeyEvent e) {
 		gm.keyReleased(e.getKeyCode());
 	}
 

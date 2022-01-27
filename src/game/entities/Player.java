@@ -3,16 +3,11 @@ package game.entities;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
 import game.Game;
-import game.GameManager;
 import game.GamePanel;
 import game.GameState;
 import game.Start;
@@ -27,18 +22,17 @@ import game.physics.Collision;
  */
 public class Player {
 
-	private GameManager gm;
 	private static int curLevel = 1;
 	private static double score = 0;
 	//movement booleans
-	private boolean right = false, left = false, jumping = false, falling = false, paused = false;
+	private boolean right = false, left = false, jumping = false, falling = false;
 	private boolean topCollision = false;
 	//bounds
 	private double x, y;
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 20;
+	private double moveSpeed = 5;
 
 	//jump speed
 	private double jumpSpeed = 5;
@@ -169,10 +163,10 @@ public class Player {
 		if(falling) { //whenever the player is in midair and falling
 			GameState.yOffset += currentFallSpeed;
 
-			if(currentFallSpeed < maxFallSpeed) {
-				currentFallSpeed += 0.1;
+			if(currentFallSpeed < maxFallSpeed) { //when the currentFallSpeed has not met its peak
+				currentFallSpeed += 0.1; //increase the fallSpeed
 			}
-			if(GameState.yOffset >= 500) {
+			if(GameState.yOffset >= 500) { //when player falls below 500 pixels player dies
 				death();
 			}
 		}
@@ -180,17 +174,17 @@ public class Player {
 		if(!falling) { //resetting fall speed every time the player lands
 			currentFallSpeed = 0.1;
 		}
-		if(score > Game.getUserScore(username)) {
-			Game.saveScore((int) (score));
-			Game.saveData();
+		if(score > Game.getUserScore(username)) {  //if the user has achieved a new highscore
+			Game.saveScore((int) (score)); //save this score
+			Game.saveData(); //save this data
 		}
 	}
 
 	public void draw(Graphics g) throws IOException {
 		g.setColor(Color.white);
-		g.fillRect((int)x, (int)y, width, height);
-		g.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		g.drawString("Score: " + (int)score, 1400, 50);
+		g.fillRect((int)x, (int)y, width, height); //filling frame with player icon
+		g.setFont(new Font("Times New Roman", Font.BOLD, 20)); //setting font
+		g.drawString("Score: " + (int)score, 1400, 50); //display of score
 	}
 	/**
 	 * keyPressed method keeps track of the different keys the user is pushing and in turn results in different events happening.

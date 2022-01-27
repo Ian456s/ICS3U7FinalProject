@@ -1,23 +1,16 @@
 package game;
 
-import java.awt.Color;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
 import game.entities.Player;
 import game.mapping.Map;
-import game.objects.Block;
 
 public class Level3State extends GameState{
 	
 	private Player player;
-	private Block[] b;
 	private Map map;
 	
 	public Level3State(GameManager gm) {
@@ -39,13 +32,13 @@ public class Level3State extends GameState{
 		player.tick(map.getBlocks(), map.getMovingBlocks());
 		map.tick();
 		System.out.println(xOffset + ", " + yOffset);
-		if(xOffset > 9000) {
+		if(xOffset > 1000) {
 			Game.end();
 			GameState.menu();
 		}
 	}
 	
-	public void draw(Graphics g) throws FontFormatException, IOException {	
+	public void draw(@SuppressWarnings("exports") Graphics g) throws FontFormatException, IOException {	
 		player.draw(g);
 		map.draw(g);
 		

@@ -8,14 +8,15 @@ import java.util.Arrays;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-
+/**
+ * Start method to open new frame for users to register or sign in
+ * @author Ian Tang
+ * Date: January 4th, 2021
+ */
 public class Start extends JFrame implements ActionListener {
-	/**
-	 * Author: Ian Tang
-	 * Date: January 4th, 2022
-	 */
+	
 	private static final long serialVersionUID = 1L;
-	private static JFrame f;
+	private static JFrame f; //frame initiation
 	private ImageIcon background;
 	private JLabel backgroundLabel;
 	final static int MAX = 100000;
@@ -125,7 +126,7 @@ public class Start extends JFrame implements ActionListener {
 		saveUsers();
 	}
 
-	public void makeButton(JButton b) {
+	public void makeButton(@SuppressWarnings("exports") JButton b) {
 		b.addActionListener(this);
 		b.setFocusable(false);
 		b.setFont(buttonFont);
@@ -138,6 +139,7 @@ public class Start extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, "Access Granted!");
 	}
 
+	@SuppressWarnings("deprecation")
 	public void register() throws FontFormatException {
 		curUser = userName.getText().trim();
 		curPass = password.getText().trim();
@@ -157,6 +159,7 @@ public class Start extends JFrame implements ActionListener {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public void login() throws FontFormatException {
 		curUser = userName.getText(); 
 		curPass = password.getText();
@@ -176,7 +179,7 @@ public class Start extends JFrame implements ActionListener {
 		}
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == login) {
 			try {
 				login();
