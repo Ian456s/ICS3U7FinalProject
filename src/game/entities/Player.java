@@ -38,7 +38,7 @@ public class Player {
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 5;
+	private double moveSpeed = 20;
 
 	//jump speed
 	private double jumpSpeed = 5;
@@ -55,6 +55,11 @@ public class Player {
 		this.height = height;
 	}
 
+	/**
+	 * The tick method embeds all the necessary processes for the game that must be executed each tick. 
+	 * @param b - an array of blocks the game has to render and put into effect
+	 * @param movingBlocks - an ArrayList of moving blocks that the game has to render and put into effect
+	 */
 	public void tick(Block[][] b, ArrayList<MovingBlock> movingBlocks) {
 		
 		int iX = (int)x;
@@ -149,8 +154,8 @@ public class Player {
 			GameState.xOffset -= moveSpeed; //xOffset decreases, moving the screen to the left as well as the character
 		}
 
-		if(jumping) {
-			GameState.yOffset -= currentJumpSpeed;
+		if(jumping) { //whenever the player jumps (presses space bar)
+			GameState.yOffset -= currentJumpSpeed; 
 
 			currentJumpSpeed -= .1;
 
@@ -161,7 +166,7 @@ public class Player {
 			}
 		}
 
-		if(falling) {
+		if(falling) { //whenever the player is in midair and falling
 			GameState.yOffset += currentFallSpeed;
 
 			if(currentFallSpeed < maxFallSpeed) {
@@ -172,7 +177,7 @@ public class Player {
 			}
 		}
 
-		if(!falling) {
+		if(!falling) { //resetting fall speed every time the player lands
 			currentFallSpeed = 0.1;
 		}
 		if(score > Game.getUserScore(username)) {

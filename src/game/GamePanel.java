@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1600;
 	public static final int HEIGHT = 900;
-	private Background[] backgrounds = {new Background("/Backgrounds/Level1Background.jpg"), new Background("/Backgrounds/Level2Background.jpeg")};
+	private Background[] backgrounds = {new Background("/Backgrounds/Level1Background.jpg"), new Background("/Backgrounds/Level2Background.jpeg"), new Background("/Backgrounds/Level3Background.jpg")};
 	Background bg;
 	private Thread thread;
 	private boolean isRunning = true;
