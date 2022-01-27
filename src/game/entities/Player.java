@@ -192,7 +192,10 @@ public class Player {
 		g.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		g.drawString("Score: " + (int)score, 1400, 50);
 	}
-
+	/**
+	 * keyPressed method keeps track of the different keys the user is pushing and in turn results in different events happening.
+	 * @param k - key being pressed
+	 */
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_D)right = true;
 		if(k == KeyEvent.VK_A)left = true;
@@ -204,23 +207,39 @@ public class Player {
 			score = 0;
 		}
 	}
-	
+	/**
+	 * death method to reset player's position to start of level.
+	 */
 	public void death() {
 		GameState.xOffset = GameState.startX;
 		GameState.yOffset = GameState.startY;
 	}
-	
+	/**
+	 * keyReleased method keeps track of the different keys the user is releasing and in turn results in different events happening.
+	 * @param k - key being released
+	 */
 	public void keyReleased(int k) {
 		if(k == KeyEvent.VK_D)right = false;
 		if(k == KeyEvent.VK_A)left = false; 
 	}
-
+	/**
+	 * setLevel method to change the curent level's number.
+	 * @param l - level the current level is changing to
+	 */
 	public static void setLevel(int l) {
 		curLevel = l;
 	}
+	/**
+	 * getScore is a method to return the player's current score.
+	 * @return - returns the score
+	 */
 	public static int getScore() {
 		return (int)score;
 	}
+	/**
+	 * getLevel is a method to return the current level the player is on.
+	 * @return - returns the level, in the form of an integer.
+	 */
 	public static int getLevel() {
 		return curLevel;
 	}

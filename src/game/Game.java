@@ -10,7 +10,11 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
-
+import javax.swing.JOptionPane;
+/**
+ * Game class contains a frame that projects a game panel.
+ * @author - Ian Tang
+ */
 public class Game extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static int numUsers = Start.getUsers();
@@ -34,10 +38,21 @@ public class Game extends JFrame {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * getUserScore method to get the player's current score
+	 * @param username - username of current player
+	 * @return - current score of current player
+	 */
+	
 	public static int getUserScore(String username) {
 		return players[userNum].getScore();
 	}
 
+	/**
+	 * getPlayers method fills the players array with PlayerType objects, containing the username and score of a player.
+	 * @return - returns an array of PlayerType
+	 */
+	
 	public static PlayerType[] getPlayers() {
 		for(int i = 0; i < numUsers; i++)
 			players[i] = new PlayerType();
@@ -48,10 +63,20 @@ public class Game extends JFrame {
 		return players;
 	}
 	
+	/**
+	 * saveScore method to change the score of the current player
+	 * @param updatedScore - the new score the player has achieved
+	 */
+	
 	public static void saveScore(int updatedScore) {
 		players[userNum].setScore(updatedScore);
 		accounts[2][userNum] = updatedScore + "";
 	}
+	
+	/**
+	 * saveData method to write the data of the current playerbase, containing their usernames, passwords and scores
+	 * onto a text file named accounts.txt.
+	 */
 	
 	public static void saveData() {
 		try {
@@ -67,12 +92,24 @@ public class Game extends JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * getUserNum method to iterate through the current players in the database and find what number they are.
+	 * @param user - username of current player
+	 * @return - the player's number according to the text file accounts.txt
+	 */
+	
 	public static int getUserNum(String user) {
 		for(int i = 0; i < numUsers; i++) {
 			if(accounts[0][i].equals(user))return i;
 		}
 		return 0;
 	}
+	
+	/**
+	 * close method to return to the main menu.
+	 */
+	
 	public static void close() {
 		frame.dispose();
 		try {
@@ -80,6 +117,15 @@ public class Game extends JFrame {
 		} catch (IOException | LineUnavailableException | UnsupportedAudioFileException | FontFormatException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * end method to signify to the user that they have completed the game and are returning to the main menu.
+	 */
+	
+	public static void end() {
+		JOptionPane.showMessageDialog(frame, "You have made it to the end of the game! Congratulations!");
+		
 	}
 	
 }

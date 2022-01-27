@@ -14,20 +14,20 @@ import game.entities.Player;
 import game.mapping.Map;
 import game.objects.Block;
 
-public class Level2State extends GameState{
+public class Level3State extends GameState{
 	
 	private Player player;
 	private Block[] b;
 	private Map map;
 	
-	public Level2State(GameManager gm) {
+	public Level3State(GameManager gm) {
 		super(gm);
 		
 	}
 	
 	public void init() {
 		player = new Player(30, 30);
-		map = new Map("/Maps/map2.map");
+		map = new Map("/Maps/map3.map");
 		xOffset = -795;
 		yOffset = -420;
 		startX = xOffset;
@@ -39,9 +39,9 @@ public class Level2State extends GameState{
 		player.tick(map.getBlocks(), map.getMovingBlocks());
 		map.tick();
 		System.out.println(xOffset + ", " + yOffset);
-		if(xOffset > 4000) {
-			player.setLevel(3);
-			gm.states.push(new Level3State(gm));
+		if(xOffset > 9000) {
+			Game.end();
+			GameState.menu();
 		}
 	}
 	
