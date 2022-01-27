@@ -3,9 +3,13 @@ package game.entities;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import game.Game;
 import game.GameManager;
@@ -16,6 +20,11 @@ import game.objects.Block;
 import game.objects.MovingBlock;
 import game.physics.Collision;
 
+/**
+ * Player class for movement around the game, as well as displaying score and a background.
+ * @author Ian Tang
+ *
+ */
 public class Player {
 
 	private GameManager gm;
@@ -129,15 +138,15 @@ public class Player {
 
 		topCollision = false;
 
-		if(right) {
-			GameState.xOffset += moveSpeed;
-			if(GameState.xOffset > GameState.farthest) {
-				GameState.farthest = GameState.xOffset;
-				score+=0.1;
+		if(right) { //when player is moving right (holding d)
+			GameState.xOffset += moveSpeed; //xOffset increases, moving the screen as well as the character
+			if(GameState.xOffset > GameState.farthest) { //if the player moves past their original "highscore point"
+				GameState.farthest = GameState.xOffset; //the player's new highscore point is their current position
+				score+=0.1; //score increases
 			}
 		}
-		if(left) {
-			GameState.xOffset -= moveSpeed;
+		if(left) { //when player is moving left (holding a)
+			GameState.xOffset -= moveSpeed; //xOffset decreases, moving the screen to the left as well as the character
 		}
 
 		if(jumping) {
@@ -172,7 +181,7 @@ public class Player {
 		}
 	}
 
-	public void draw(Graphics g) {
+	public void draw(Graphics g) throws IOException {
 		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, width, height);
 		g.setFont(new Font("Times New Roman", Font.BOLD, 20));

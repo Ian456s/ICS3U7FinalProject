@@ -28,7 +28,7 @@ public class MainMenu implements ActionListener{
 	ImageIcon background, Title;
 	
 	public MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
-		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
+		background = new ImageIcon(getClass().getResource("/Backgrounds/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
 		biggerFont = buttonFont.deriveFont(40f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));

@@ -30,7 +30,7 @@ public class Leaderboard implements ActionListener {
 	public static PlayerType[] players;
 	Leaderboard() throws FontFormatException, IOException {
 		//initial declarations
-		background = new ImageIcon(this.getClass().getResource("/mainMenuBackground.jpg"));
+		background = new ImageIcon(this.getClass().getResource("/Backgrounds/mainMenuBackground.jpg"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 36f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));

@@ -22,7 +22,7 @@ public class TutorialPage implements ActionListener {
         textFont = buttonFont.deriveFont(Font.BOLD, 24f);
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 32f);
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
-		background = new ImageIcon(getClass().getResource("/mainMenuBackground.jpg"));
+		background = new ImageIcon(getClass().getResource("/Backgrounds/mainMenuBackground.jpg"));
 		backgroundLabel = new JLabel(background);
 		backgroundLabel.setSize(1600, 900);
 		titleLabel = new JLabel(Title);

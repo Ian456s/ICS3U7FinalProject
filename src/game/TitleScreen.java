@@ -24,7 +24,7 @@ public class TitleScreen implements ActionListener {
 	
 	TitleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		//initializing variables
-		background = new ImageIcon(this.getClass().getResource("/forest.jpg"));
+		background = new ImageIcon(this.getClass().getResource("/Backgrounds/LoadingBackground.jpg"));
 		Title = new ImageIcon(this.getClass().getResource("/title.png"));
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 24f);

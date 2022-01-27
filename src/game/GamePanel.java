@@ -3,6 +3,7 @@ package game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -18,7 +19,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1600;
 	public static final int HEIGHT = 900;
-	
+	private Background[] backgrounds = {new Background("/Backgrounds/Level1Background.jpg"), new Background("/Backgrounds/Level2Background.jpeg")};
+	Background bg;
 	private Thread thread;
 	private boolean isRunning = true;
 	private int FPS = 60;
@@ -68,8 +70,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		super.paintComponent(g);
 		Color colors[] = {Color.black, new Color(214, 178, 15), new Color(77, 86, 255)};
 		g.setColor(colors[Player.getLevel()-1]);
+		bg = backgrounds[Player.getLevel()-1];
 		g.drawRect(0, 0, WIDTH, HEIGHT);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		bg.draw((Graphics2D)g);
 		try {
 			gm.draw(g);
 		} catch (FontFormatException | IOException e) {

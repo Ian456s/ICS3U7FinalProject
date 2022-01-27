@@ -52,7 +52,7 @@ public class Start extends JFrame implements ActionListener {
 			accounts[1][i] = passwords[i];
 			accounts[2][i] = scores[i];
 		}
-		background = new ImageIcon(this.getClass().getResource("/background.jpg"));
+		background = new ImageIcon(this.getClass().getResource("/Backgrounds/background.jpg"));
 		backgroundLabel = new JLabel(background);
 		backgroundLabel.setSize(1280, 972);
 		f = new JFrame("Our Lost Friend - Login");

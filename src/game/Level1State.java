@@ -49,6 +49,7 @@ public class Level1State extends GameState{
 		player.draw(g);
 		map.draw(g);
 		
+		
 	}
 
 	public void keyPressed(int k)
