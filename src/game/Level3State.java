@@ -32,7 +32,7 @@ public class Level3State extends GameState{
 		player.tick(map.getBlocks(), map.getMovingBlocks());
 		map.tick();
 		System.out.println(xOffset + ", " + yOffset);
-		if(xOffset > 1000) {
+		if(xOffset > 12000) {
 			Game.end();
 			GameState.menu();
 		}
