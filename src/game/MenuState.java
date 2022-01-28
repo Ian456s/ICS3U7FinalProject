@@ -57,7 +57,7 @@ public class MenuState extends GameState {
 		
 		if(k == KeyEvent.VK_ENTER) {
 			if(currentSelection == 0) {
-				gm.states.push(new Level1State(gm));
+				gm.states.push(new Level3State(gm));
 			} else if(currentSelection == 1) {
 				Game.close();
 			}
