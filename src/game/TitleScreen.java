@@ -12,8 +12,13 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-
+/**
+ * TitleScreen.java is a class that creates a window for a title screen before the main menu.
+ * @author Ian Tang
+ *
+ */
 public class TitleScreen implements ActionListener {
+	//global variable declaration
 	String userName = Start.getUser();
 	JFrame f;
 	JLabel backgroundLabel, titleLabel;
@@ -48,8 +53,8 @@ public class TitleScreen implements ActionListener {
 		continueButton.setFont(biggerFont);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
-		f.setLocationRelativeTo(null);
+		f.setVisible(true); //enabling visibility
+		f.setLocationRelativeTo(null); //centering frame
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
         clip.start();
         backgroundLabel.add(continueButton);
