@@ -19,14 +19,14 @@ public class changePassword implements ActionListener {
 	public static String[][] accounts; //accounts 2D array
 	private JTextArea username; //text area for username
 	private JPasswordField password, newPassword; //password field 
-	private JLabel backgroundLabel; //background label to hold the background and necessary buttons, etc.
+	private JLabel backgroundLabel, userLabel, passwordLabel, newPasswordLabel; //labels
 	private JButton changePassword, done; //buttons to change password and close window
 	private String fileName = "accounts.txt"; //file name
 	private BufferedWriter out; //bufferedwriter to save data in text files
 	int numOfUsers = Start.getUsers(); //number of users
 	String curUser, curPass, enteredUser, enteredPass; //Strings for entered fields
 	Font buttonFont = new Font("Comic Sans",Font.BOLD, 14); //button font
-	
+	Font textFont = new Font("Comic Sans", Font.BOLD, 12);
 	changePassword() throws IOException {
 		f = new JFrame("Password Change"); //creating new frame
 		accounts = Start.getAccounts(); //retrieving accounts
@@ -35,12 +35,21 @@ public class changePassword implements ActionListener {
 		backgroundLabel = new JLabel(); //creating new JLabel for background 
 		backgroundLabel.setSize(300, 300); //setting the size
 		backgroundLabel.setBackground(Color.black); //setting default background color
-		username = new JTextArea("Username"); //Instantiating new text area for username
-		username.setBounds(80, 30, 140, 20); //setting bounds for username
-		password = new JPasswordField("Password"); //Instantiating new text area for password
-		password.setBounds(80, 70, 140, 20); //setting bounds
-		newPassword = new JPasswordField("New Password"); //Instantiating new text area for new password
-		newPassword.setBounds(80, 110, 140, 20); //settings bounds
+		username = new JTextArea(); //Instantiating new text area for username
+		username.setBounds(90, 30, 140, 20); //setting bounds for username
+		userLabel = new JLabel("Username: ");
+		userLabel.setBounds(0, 25, 150, 30);
+		makeLabel(userLabel);
+		password = new JPasswordField(); //Instantiating new text area for password
+		password.setBounds(90, 70, 140, 20); //setting bounds
+		passwordLabel = new JLabel("Password: ");
+		passwordLabel.setBounds(0, 65, 150, 30);
+		makeLabel(passwordLabel);
+		newPassword = new JPasswordField(); //Instantiating new text area for new password
+		newPassword.setBounds(90, 110, 140, 20); //settings bounds
+		newPasswordLabel = new JLabel("New Password: ");
+		newPasswordLabel.setBounds(0, 105, 140, 30);
+		makeLabel(newPasswordLabel);
 		backgroundLabel.add(username); //adding username to background label
 		backgroundLabel.add(password); //adding password to background label
 		backgroundLabel.add(newPassword); //adding new password to background label
@@ -59,6 +68,17 @@ public class changePassword implements ActionListener {
 		f.getContentPane().setBackground(Color.orange);
 		f.add(backgroundLabel);
 	}
+	
+	/**
+	 * makeLabel method to store basic code that changes appearance of a label
+	 */
+	
+	private void makeLabel(JLabel l) {
+		l.setFont(textFont);
+		l.setForeground(Color.black);
+		backgroundLabel.add(l);
+	}
+	
 	/**
 	 * makeButton method to store some basic code to change the appearance of a button
 	 * @param b

@@ -196,6 +196,7 @@ public class Player {
 		if(k == KeyEvent.VK_SPACE && !jumping & !falling)jumping = true;
 		if(k == KeyEvent.VK_ESCAPE) {
 			GameState.menu();
+			curLevel = 1;
 			GameState.xOffset = GameState.startX;
 			GameState.yOffset = GameState.startY;
 			score = 0;
@@ -238,4 +239,7 @@ public class Player {
 		return curLevel;
 	}
 
+	public static void setScore(int newScore) {
+		score = newScore;
+	}
 }

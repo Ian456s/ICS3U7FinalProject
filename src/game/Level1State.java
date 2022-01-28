@@ -31,7 +31,6 @@ public class Level1State extends GameState{
 	public void tick() {	
 		player.tick(map.getBlocks(), map.getMovingBlocks());
 		map.tick();
-		System.out.println(xOffset + ", " + yOffset);
 		if(xOffset > 12000) {
 			Player.setLevel(2);
 			gm.states.push(new Level2State(gm));

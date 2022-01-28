@@ -7,6 +7,8 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import game.entities.Player;
+
 public abstract class GameState {
 	
 	protected static GameManager gm;
@@ -33,6 +35,10 @@ public abstract class GameState {
 	public abstract void keyReleased(int k);
 	
 	public static void menu() {
+		Player.setLevel(1);
+		GameState.xOffset = GameState.startX;
+		GameState.yOffset = GameState.startY;
+		Player.setScore(0);
 		gm.states.push(new MenuState(gm));
 	}
 }

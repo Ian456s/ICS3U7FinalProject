@@ -64,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	public void paintComponent(@SuppressWarnings("exports") Graphics g) {
 		super.paintComponent(g);
+		
 		Color colors[] = {Color.black, new Color(214, 178, 15), new Color(77, 86, 255)};
 		g.setColor(colors[Player.getLevel()-1]);
 		bg = backgrounds[Player.getLevel()-1];
