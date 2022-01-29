@@ -3,11 +3,13 @@ package game;
 import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
+
 /**
  * Background class for rendering backgrounds efficiently within the game
  * @author Ian Tang
  *
  */
+
 public class Background {
 	
 	private BufferedImage image;

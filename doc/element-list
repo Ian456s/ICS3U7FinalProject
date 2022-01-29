@@ -1,0 +1,7 @@
+module:ICS3U7FinalProject
+game
+game.entities
+game.mapping
+game.objects
+game.physics
+game.sprites

@@ -1,13 +1,13 @@
 package game.sprites;
 
 import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.*;
 
 /**
  * Images class for rendering images for our game
  */
 
-import java.io.*;
-import javax.imageio.*;
 public class Images {
 	public static BufferedImage[] blocks;
 	public Images() {
