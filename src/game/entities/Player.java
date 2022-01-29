@@ -32,7 +32,7 @@ public class Player {
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 20;
+	private double moveSpeed = 5;
 
 	//jump speed
 	private double jumpSpeed = 5;
