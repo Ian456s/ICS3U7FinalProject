@@ -25,29 +25,30 @@ public class Start extends JFrame implements ActionListener {
 	private JLabel userLabel, passLabel;
 	private JTextArea userName; 
 	private JPasswordField password;
-	private String fileName = "accounts.txt";
+	private String fileName = "accounts.txt"; //initializing string
 	private BufferedReader in;
 	private BufferedWriter out;
-	public static String[][] accounts = new String[3][100000];
-	String[] users, passwords, scores;
-	static int numOfUsers;
+	public static String[][] accounts = new String[3][100000]; //initializing string array
+	String[] users, passwords, scores; //initializing string arrays
+	static int numOfUsers; 
 	public static String curUser;
 	public static String curPass;
-	Font buttonFont = new Font("Comic Sans",Font.BOLD, 14);
+	Font buttonFont = new Font("Comic Sans",Font.BOLD, 14); //initializing new font
 
 	public static void main(String[] args) throws IOException {
 		new Start();
 	}
 
 	Start() throws IOException {
+		//initialization of variables
 		in = new BufferedReader(new FileReader(fileName)); //instantiating BufferedReader to read in usernames, passwords and scores
 		//reading in usernames and passwords 
-		users = in.readLine().split(" ");
+		users = in.readLine().split(" "); 
 		passwords = in.readLine().split(" ");
 		scores = in.readLine().split(" ");
-		numOfUsers = users.length;
-		for(int i = 0; i < numOfUsers; i++) {
-			accounts[0][i] = users[i];
+		numOfUsers = users.length; 
+		for(int i = 0; i < numOfUsers; i++) { //manually setting data for the accounts array so that there is still empty space, as arrays are immutable
+			accounts[0][i] = users[i]; 
 			accounts[1][i] = passwords[i];
 			accounts[2][i] = scores[i];
 		} //storing data into 2D String array 
@@ -86,10 +87,12 @@ public class Start extends JFrame implements ActionListener {
 		f.add(backgroundLabel);
 		in.close();
 	}
+	
 	/**
 	 * saveUsers function to save data by writing accounts array data into the textfile
 	 * @throws IOException
 	 */
+	
 	public void saveUsers() throws IOException {
 		out = new BufferedWriter(new FileWriter(fileName));
 		for(int i = 0; i < numOfUsers; i++) {
@@ -258,6 +261,7 @@ public class Start extends JFrame implements ActionListener {
 	 * Usercheck method to check if entered credentials are valid or not
 	 * @return boolean depending on whether or not the credentials entered are correct
 	 */
+	
 	private boolean userCheck() {
 
 		for(int j = 0; j < numOfUsers; j++) {

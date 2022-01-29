@@ -13,48 +13,55 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+/**
+ * MainMenu class to display a window for the main menu
+ * @author Ian Tang
+ *
+ */
 public class MainMenu implements ActionListener{
-	String userName = Start.getUser();
+	//variable declaration
+	String userName = Start.getUser(); //fetching username from the Start class
 	JFrame f;
 	JButton exitGame, leaderboard, gameStart, tutorial, changePassword;
 	JLabel backgroundLabel, titleLabel, authors, signedInAs;
 	Font buttonFont, biggerFont;
-	Font textFont = new Font("Verdana", Font.BOLD, 14);
+	Font textFont = new Font("Verdana", Font.BOLD, 14); //declaring font
 	boolean changedPass;
 	Clip clip;
 	ImageIcon background, Title;
 	
 	public MainMenu() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
-		background = new ImageIcon(getClass().getResource("/Backgrounds/mainMenuBackground.jpg"));
-		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
-		biggerFont = buttonFont.deriveFont(40f);
-		Title = new ImageIcon(this.getClass().getResource("/title.png"));
-		clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("OurLostFriend.wav").getPath())));
-		changedPass = false;
-		f = new JFrame("Our Lost Friend - Main Menu - Ian Tang & Naveed Khan");
-		backgroundLabel = new JLabel(background);
-		titleLabel = new JLabel(Title);
-		authors = new JLabel("<html><p style=\"width:200px\">"+"By: Ian Tang & Naveed Khan <br> Class: ICS3U7-01 <br> Teacher: Mrs. Xie"+"</p></html>");
+		//initialization of variables
+		background = new ImageIcon(getClass().getResource("/Backgrounds/mainMenuBackground.jpg")); // fetching background image
+		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF")); //fetching font
+		biggerFont = buttonFont.deriveFont(40f); //deriving font into bigger size
+		Title = new ImageIcon(this.getClass().getResource("/title.png")); //fetching title image
+		clip = AudioSystem.getClip();  //initializing clip
+        clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("OurLostFriend.wav").getPath()))); //fetching audio
+		changedPass = false; //initializing boolean
+		f = new JFrame("Our Lost Friend - Main Menu - Ian Tang & Naveed Khan"); //initializing new JFrame
+		backgroundLabel = new JLabel(background); //initializing new background label
+		titleLabel = new JLabel(Title); //initializing new title label
+		authors = new JLabel("<html><p style=\"width:200px\">"+"By: Ian Tang & Naveed Khan <br> Class: ICS3U7-01 <br> Teacher: Mrs. Xie"+"</p></html>"); //initializing new authors label
 		makeLabel(authors);
-		authors.setBounds(10, -10, 300, 100);
-		signedInAs = new JLabel("<html><p style=\"width:200px\">"+"Currently signed in as: <br>" + userName +"</p></html>");
+		authors.setBounds(10, -10, 300, 100); //setting position of label
+		signedInAs = new JLabel("<html><p style=\"width:200px\">"+"Currently signed in as: <br>" + userName +"</p></html>"); //initializing new signedInAs label
 		makeLabel(signedInAs);
-		signedInAs.setBounds(1400, -10, 210, 100);
-		f.setSize(1600, 900);
-		backgroundLabel.setSize(1600, 900);
-		titleLabel.setSize(980,60);
-		titleLabel.setBounds(180, 100, 1158, 97);
-		gameStart = new JButton("Start Game");
-		gameStart.setBounds(600, 300, 300, 60);
-		tutorial = new JButton("How to Play");
-		tutorial.setBounds(600, 400, 300, 60);
-		leaderboard = new JButton("Leaderboard");
-		leaderboard.setBounds(600, 500, 300, 60);
-		exitGame = new JButton("Exit Game");
-		exitGame.setBounds(600, 600, 300, 60);
-		changePassword = new JButton("Change Password");
-		changePassword.setBounds(550, 700, 400, 60);
+		signedInAs.setBounds(1400, -10, 210, 100); //setting position of label
+		f.setSize(1600, 900); //setting size of frame
+		backgroundLabel.setSize(1600, 900); //setting size of label
+		titleLabel.setSize(980,60); //setting size of label 
+		titleLabel.setBounds(180, 100, 1158, 97); //setting position of label
+		gameStart = new JButton("Start Game"); //initializing new button for starting the game
+		gameStart.setBounds(600, 300, 300, 60); //setting position of game button
+		tutorial = new JButton("How to Play"); //initializing new button for the tutorial
+		tutorial.setBounds(600, 400, 300, 60); //setting position of tutorial button
+		leaderboard = new JButton("Leaderboard"); //initializing new button for the leaderboard
+		leaderboard.setBounds(600, 500, 300, 60); //setting position of leaderboard 
+		exitGame = new JButton("Exit Game"); //initializing new button to exit the game
+		exitGame.setBounds(600, 600, 300, 60); //setting position of exit button
+		changePassword = new JButton("Change Password"); //initializing new button to change the current user's password
+		changePassword.setBounds(550, 700, 400, 60); //setting position of change password button
 		makeButton(gameStart);
 		makeButton(tutorial);
 		makeButton(leaderboard);
@@ -72,6 +79,12 @@ public class MainMenu implements ActionListener{
 		f.add(backgroundLabel);
 
 	}
+	
+	/**
+	 * makeButton method to store code that will change the appearance of a button
+	 * @param b - button being manipulated
+	 */
+	
 	public void makeButton(@SuppressWarnings("exports") JButton b) {
 		b.setFont(biggerFont);
 		b.setForeground(Color.white);
@@ -83,10 +96,21 @@ public class MainMenu implements ActionListener{
 		b.setBorderPainted(false);
 		backgroundLabel.add(b);
 	}
+	
+	/**
+	 * makeLabel method to store code that will change the appearance of a label
+	 * @param l - label being manipulated
+	 */
+	
 	public void makeLabel(@SuppressWarnings("exports") JLabel l) {
 		l.setForeground(Color.white);
 		l.setFont(textFont);
 	}
+	
+	/**
+	 * actionPerformed method to keep track of the user's actions 
+	 */
+	
 	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == gameStart) {
 			try {
@@ -135,13 +159,14 @@ public class MainMenu implements ActionListener{
 
 	}
 
+	/**
+	 * reprompt method to display window for user to confirm their exit
+	 */
+	
 	public void reprompt() {
 		int result = JOptionPane.showConfirmDialog(f,
 				"Are you sure you want to quit?",
 				"Confirm Quit", JOptionPane.YES_NO_CANCEL_OPTION);
 		if (result == JOptionPane.YES_OPTION) System.exit(0);
-	}
-	public void notYetMade() {
-		JOptionPane.showMessageDialog(f, "Hey! This hasn't been added to our game yet!");
 	}
 }

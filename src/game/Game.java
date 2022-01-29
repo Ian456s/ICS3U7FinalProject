@@ -26,7 +26,7 @@ public class Game extends JFrame {
 	
 	public Game() throws IOException {
 		Game.getPlayers();
-		Game.getUserNum(username);
+		userNum = Game.getUserNum(username);
 		frame = new JFrame("Our Lost Friend");
 		frame.setSize(1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

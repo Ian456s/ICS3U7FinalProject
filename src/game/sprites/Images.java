@@ -1,9 +1,11 @@
 package game.sprites;
 
 import java.awt.image.BufferedImage;
+
 /**
  * Images class for rendering images for our game
  */
+
 import java.io.*;
 import javax.imageio.*;
 public class Images {

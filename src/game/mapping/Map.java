@@ -15,21 +15,23 @@ import game.objects.MovingBlock;
  *
  */
 public class Map {
-	
-	private String path;
-	private String line;
-	private int width, height;
-	private ArrayList<MovingBlock> movingBlocks;
-	private Block[][] blocks;
+	 
+	private String path; //path of where the map file is located
+	private String line; //each line of the map file that will be read
+	private int width, height; //width and height of the map 
+	private ArrayList<MovingBlock> movingBlocks; //arraylist of moving blocks within the level
+	private Block[][] blocks; //array for blocks within the level
 	
 	public Map(String mapPath) {
 		path = mapPath;	
 		loadMap();
 	}
+	
 	/**
 	 * draw method for drawing blocks onto the board.
 	 * @param g
 	 */
+	
 	public void draw (Graphics g) {
 		for(int i = 0; i < blocks.length; i++) {
 			for(int j = 0; j < blocks[0].length; j++) {
@@ -41,9 +43,11 @@ public class Map {
 			movingBlocks.get(i).draw(g); //drawing moving blocks
 		}
 	}
+	
 	/**
 	 * loadMap method to load maps with given map file
 	 */
+	
 	public void loadMap() {
 		InputStream is = this.getClass().getResourceAsStream(path);
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -78,25 +82,31 @@ public class Map {
 		}
 		
 	}
+	
 	/**
 	 * tick method for whatever happens during a tick of the game
 	 */
+	
 	public void tick() {
 		for(int i= 0; i < movingBlocks.size(); i++) {
 			movingBlocks.get(i).tick();
 		}
 	}
+	
 	/**
 	 * getBlocks method to return the 2D plane of blocks
 	 * @return - array of Blocks
 	 */
+	
 	public Block[][] getBlocks() {
 		return blocks;
 	}
+	
 	/**
 	 * getMovingBlocks method to return the 2D plane of moving blocks
 	 * @return - array of MovingBlocks
 	 */
+	
 	public ArrayList<MovingBlock> getMovingBlocks(){
 		return movingBlocks;
 	}

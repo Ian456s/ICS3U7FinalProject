@@ -14,8 +14,8 @@ import game.sprites.Images;
 public class Block extends Rectangle{
 	private static final long serialVersionUID = 1L;
 
-	public static final int blockSize = 64;
-	private int id;
+	public static final int blockSize = 64; //size of one block (width and height)
+	private int id; //id of the block, corresponding with the image that it is represented by
 	public Block(int x, int y, int id) {
 		setBounds(x,y,blockSize,blockSize);
 		this.id = id;
@@ -24,6 +24,7 @@ public class Block extends Rectangle{
 	/**
 	 * tick method for whatever happens during one tick of the game
 	 */
+	
 	public void tick() {
 	}
 	/**

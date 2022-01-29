@@ -20,9 +20,7 @@ public class Background {
 	public Background(String s) {
 		
 		try {
-			image = ImageIO.read(
-				getClass().getResourceAsStream(s)
-			);
+			image = ImageIO.read(getClass().getResourceAsStream(s)); //fetching image
 		}
 		catch(Exception e) {
 			e.printStackTrace();

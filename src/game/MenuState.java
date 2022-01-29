@@ -7,7 +7,11 @@ import javax.imageio.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+/**
+ * MenuState class for the state of the game while it is in the menu
+ * @author Ian Tang
+ *
+ */
 public class MenuState extends GameState {
 	private String[] buttons = {"Start Level", "Quit"};
 	private int currentSelection = 0;
@@ -20,10 +24,11 @@ public class MenuState extends GameState {
 
 	public void init() {}
 
-	public void tick() {
-		
-	}
+	public void tick() {}
 
+	/**
+	 * draw method to display different options onto the screen
+	 */
 	public void draw(@SuppressWarnings("exports") Graphics g) throws FontFormatException, IOException {
 		background = ImageIO.read(this.getClass().getResource("/Backgrounds/mainMenuBackground.jpg"));
 		g.clearRect(0, 0, Game.WIDTH, Game.HEIGHT);
@@ -42,6 +47,10 @@ public class MenuState extends GameState {
 		
 	}
 
+	/**
+	 * keyPressed method to keep track of the user's actions
+	 */
+	
 	public void keyPressed(int k) throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		if(k == KeyEvent.VK_DOWN) {
 			currentSelection ++;
@@ -64,9 +73,6 @@ public class MenuState extends GameState {
 		}
 	}
 
-	public void keyReleased(int k) {
-		
-		
-	}
+	public void keyReleased(int k) {}
 
 }

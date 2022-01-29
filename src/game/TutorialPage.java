@@ -8,9 +8,13 @@ import java.io.*;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-
+/**
+ * TutorialPage class to create the window for the How To Play section of our game
+ * @author Naveed Khan
+ *
+ */
 public class TutorialPage implements ActionListener {
-
+	//declaration of variables
 	JFrame f;
 	JButton back;
 	ImageIcon background, Title;
@@ -18,6 +22,7 @@ public class TutorialPage implements ActionListener {
 	Font buttonFont, biggerFont, textFont;
 	
 	TutorialPage() throws FontFormatException, IOException {
+		//initialization of variables
 		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));
         textFont = buttonFont.deriveFont(Font.BOLD, 24f);
 		biggerFont = buttonFont.deriveFont(Font.BOLD, 32f);
@@ -56,7 +61,11 @@ public class TutorialPage implements ActionListener {
 		f.setVisible(true);
 		f.setLocationRelativeTo(null);
 	}
-
+	
+	/**
+	 * actionPerformed method to keep track of the user's actions
+	 */
+	
 	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == back) {
 			try {
@@ -70,6 +79,11 @@ public class TutorialPage implements ActionListener {
 
 	}
 	
+	/**
+	 * makeBackButton method to store code that will change the appearance of the back button
+	 * @param b - back button
+	 */
+	
 	private void makeBackButton(JButton b) {
 		b.setFont(biggerFont);
 		b.setForeground(Color.white);
@@ -82,6 +96,11 @@ public class TutorialPage implements ActionListener {
 		b.setBounds(360, 700, 500, 100);
 		backgroundLabel.add(b);
 	}
+	
+	/**
+	 * makeLabel method to change the appearance of any labels being displayed
+	 * @param l - JLabel
+	 */
 	
 	public void makeLabel(@SuppressWarnings("exports") JLabel l) {
 		l.setFont(textFont);

@@ -10,6 +10,11 @@ import javax.swing.*;
 import game.entities.Player;
 import game.sprites.Images;
 
+/**
+ * GamePanel class to keep track of the actual game
+ * @author Ian Tang
+ */
+
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 	private static final long serialVersionUID = 1L;
@@ -29,12 +34,18 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		new Images();
 		start();
 	}
-	
+	/**
+	 * start method to create a new thread while the game is running
+	 */
 	private void start() {
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();
 	}
+	
+	/**
+	 * run method containing code that the game uses to function
+	 */
 	public void run() {
 		long start, elapsed, wait;
 		gm = new GameManager();
@@ -57,11 +68,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			}
 		}
 	}
-	
+	/**
+	 * tick method to retrieve data from the GameManager
+	 */
 	public void tick() {
 		gm.tick();
 	}
-	
+	/**
+	 * paintComponent method to draw the background and game
+	 */
 	public void paintComponent(@SuppressWarnings("exports") Graphics g) {
 		super.paintComponent(g);
 		
@@ -77,11 +92,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			e.printStackTrace();
 		}
 	}
-	
-	public void keyTyped(@SuppressWarnings("exports") KeyEvent e) {
-		
-	}
 
+	/**
+	 * keyTyped method keeping track of keys being typed (not used)
+	 */
+	
+	public void keyTyped(@SuppressWarnings("exports") KeyEvent e) {}
+	
+	/**
+	 * keyPressed method keeping track of any keys being pressed and retrieving data on what to do from the game manager
+	 */
+	
 	public void keyPressed(@SuppressWarnings("exports") KeyEvent e) {
 		try {
 			gm.keyPressed(e.getKeyCode());
@@ -90,6 +111,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		}
 	}
 	
+	/**
+	 * keyReleased method keeping track of any keys being released and retrieving data on what to do from the game manager
+	 */
 	
 	public void keyReleased(@SuppressWarnings("exports") KeyEvent e) {
 		gm.keyReleased(e.getKeyCode());

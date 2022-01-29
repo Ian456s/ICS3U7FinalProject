@@ -22,8 +22,8 @@ import game.physics.Collision;
  */
 public class Player {
 
-	private static int curLevel = 1;
-	private static double score = 0;
+	private static int curLevel = 1; //current level is initialized as 1
+	private static double score = 0; //score is set to 0
 	//movement booleans
 	private boolean right = false, left = false, jumping = false, falling = false;
 	private boolean topCollision = false;
@@ -32,7 +32,7 @@ public class Player {
 	private int width, height;
 
 	//move speed
-	private double moveSpeed = 5;
+	private double moveSpeed = 20;
 
 	//jump speed
 	private double jumpSpeed = 5;
@@ -41,10 +41,10 @@ public class Player {
 	//fall speed
 	private double maxFallSpeed = 5;
 	private double currentFallSpeed = 0.1;
-	public String username = Start.getUser();
+	public String username = Start.getUser(); //fetching username
 	public Player(int width, int height) {
-		x = GamePanel.WIDTH/2;
-		y = GamePanel.HEIGHT/2;
+		x = GamePanel.WIDTH/2; //center the player
+		y = GamePanel.HEIGHT/2; //center the player
 		this.width = width;
 		this.height = height;
 	}
@@ -61,7 +61,7 @@ public class Player {
 		for(int i = 0; i < b.length; i++) {
 			for(int j = 0; j < b[0].length; j++) {
 
-				if(b[i][j].getID() != 0) {
+				if(b[i][j].getID() != 0) { //if the block is not empty space,
 
 					//right side collision
 					if(Collision.playerBlock(new Point(iX + width + (int)GameState.xOffset, iY + (int)GameState.yOffset + 2), b[i][j]) 
@@ -98,7 +98,7 @@ public class Player {
 
 		for(int i = 0; i < movingBlocks.size(); i++) {
 
-			if(movingBlocks.get(i).getID() != 0) {
+			if(movingBlocks.get(i).getID() != 0) { //if the moving block is not empty space,
 
 				//right side collision
 				if(Collision.playerMovingBlock(new Point(iX + width + (int)GameState.xOffset, iY + (int)GameState.yOffset + 2), movingBlocks.get(i)) 
@@ -180,16 +180,24 @@ public class Player {
 		}
 	}
 
+	/**
+	 * draw method to display the graphics of the player
+	 * @param g - Graphics
+	 * @throws IOException
+	 */
+	
 	public void draw(Graphics g) throws IOException {
 		g.setColor(Color.white);
 		g.fillRect((int)x, (int)y, width, height); //filling frame with player icon
 		g.setFont(new Font("Times New Roman", Font.BOLD, 20)); //setting font
 		g.drawString("Score: " + (int)score, 1400, 50); //display of score
 	}
+	
 	/**
 	 * keyPressed method keeps track of the different keys the user is pushing and in turn results in different events happening.
 	 * @param k - key being pressed
 	 */
+	
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_D)right = true;
 		if(k == KeyEvent.VK_A)left = true;
@@ -202,35 +210,44 @@ public class Player {
 			score = 0;
 		}
 	}
+	
 	/**
 	 * death method to reset player's position to start of level.
 	 */
+	
 	public void death() {
 		GameState.xOffset = GameState.startX;
 		GameState.yOffset = GameState.startY;
 	}
+	
 	/**
 	 * keyReleased method keeps track of the different keys the user is releasing and in turn results in different events happening.
 	 * @param k - key being released
 	 */
+	
 	public void keyReleased(int k) {
 		if(k == KeyEvent.VK_D)right = false;
 		if(k == KeyEvent.VK_A)left = false; 
 	}
+	
 	/**
 	 * setLevel method to change the curent level's number.
 	 * @param l - level the current level is changing to
 	 */
+	
 	public static void setLevel(int l) {
 		curLevel = l;
 	}
+	
 	/**
 	 * getScore is a method to return the player's current score.
 	 * @return - returns the score
 	 */
+	
 	public static int getScore() {
 		return (int)score;
 	}
+	
 	/**
 	 * getLevel is a method to return the current level the player is on.
 	 * @return - returns the level, in the form of an integer.
@@ -239,6 +256,11 @@ public class Player {
 		return curLevel;
 	}
 
+	/**
+	 * setScore - setter method to change the current player's score to a new score
+	 * @param newScore - score that the current player's score will be changing to
+	 */
+	
 	public static void setScore(int newScore) {
 		score = newScore;
 	}

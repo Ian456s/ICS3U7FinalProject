@@ -29,39 +29,36 @@ public class TitleScreen implements ActionListener {
 	
 	TitleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException, FontFormatException {
 		//initializing variables
-		background = new ImageIcon(this.getClass().getResource("/Backgrounds/LoadingBackground.jpg"));
-		Title = new ImageIcon(this.getClass().getResource("/title.png"));
-		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF"));  
-		biggerFont = buttonFont.deriveFont(Font.BOLD, 24f);
-		clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("bgm.wav").getPath())));
-		f = new JFrame("Our Lost Friend - Title");
-		 backgroundLabel = new JLabel(background);
-		titleLabel = new JLabel(Title);
-		f.setSize(1280, 720);
-		backgroundLabel.setSize(1280, 720);
-		titleLabel.setSize(980,60);
-		titleLabel.setBounds(60, 100, 1158, 97);
-		continueButton = new JButton("Continue");
-		continueButton.setBounds(590, 500, 150, 40);
-		continueButton.addActionListener(this);
-		continueButton.setFocusable(false);
-		continueButton.setForeground(Color.white);
-		continueButton.setOpaque(false);
-		continueButton.setContentAreaFilled(false);
-		continueButton.setBorderPainted(false);
-		continueButton.setFont(biggerFont);
+		background = new ImageIcon(this.getClass().getResource("/Backgrounds/LoadingBackground.jpg")); //fetching background image
+		Title = new ImageIcon(this.getClass().getResource("/title.png")); //fetching title image
+		buttonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/textFont.TTF")); //fetching font  
+		biggerFont = buttonFont.deriveFont(Font.BOLD, 24f); //deriving font to different font size
+		clip = AudioSystem.getClip(); //initializing clip
+        clip.open(AudioSystem.getAudioInputStream(getClass().getResource(new File("bgm.wav").getPath()))); //fetching audio
+		f = new JFrame("Our Lost Friend - Title"); //initializing JFrame
+		backgroundLabel = new JLabel(background); //initializing backgroundLabel
+		titleLabel = new JLabel(Title); //initializing titleLabel
+		f.setSize(1280, 720); //setting size of JFrame
+		backgroundLabel.setSize(1280, 720); //setting size of backgroundLabel
+		titleLabel.setSize(980,60); //setting size of titleLabel
+		titleLabel.setBounds(60, 100, 1158, 97); //setting position of titleLabel
+		continueButton = new JButton("Continue"); //initializing JButton
+		continueButton.setBounds(590, 500, 150, 40); //setting position of continueButton 
+		makeContinueButton(continueButton);
 		f.setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true); //enabling visibility
 		f.setLocationRelativeTo(null); //centering frame
-		clip.loop(Clip.LOOP_CONTINUOUSLY);
-        clip.start();
-        backgroundLabel.add(continueButton);
+		clip.loop(Clip.LOOP_CONTINUOUSLY); // looping music
+        clip.start(); //starting music
         f.add(titleLabel);
         f.add(backgroundLabel);
 		
 	}
+	
+	/**
+	 * actionPerformed method to keep track of the user's actions
+	 */
 	
 	public void actionPerformed(@SuppressWarnings("exports") ActionEvent e) {
 		if(e.getSource() == continueButton) {
@@ -85,4 +82,19 @@ public class TitleScreen implements ActionListener {
 		
 	}
 	
+	/**
+	 * makeContinueButton to store code that will change the appearance of the continue button
+	 * @param continueButton
+	 */
+	
+	public void makeContinueButton(@SuppressWarnings("exports") JButton continueButton) {
+		continueButton.addActionListener(this);
+		continueButton.setFocusable(false);
+		continueButton.setForeground(Color.white);
+		continueButton.setOpaque(false);
+		continueButton.setContentAreaFilled(false);
+		continueButton.setBorderPainted(false);
+		continueButton.setFont(biggerFont);
+		backgroundLabel.add(continueButton);
+	}
 }
